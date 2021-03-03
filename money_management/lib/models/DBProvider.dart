@@ -11,9 +11,14 @@ class DBProvider{
   Future<Database> database;
 
   DBProvider(){
+    _getInstance();
+  }
+
+  Future<Database> _getInstance(){
     if(database == null){
       database = _database();
     }
+    return database;
   }
 
   Future<Database> _database() async {
@@ -51,6 +56,16 @@ class DBProvider{
       _dbName,
       where: "date = ?",
       whereArgs: [date],
+    );
+  }
+
+  Future<void> insertExpense(Expense expense) async {
+    final Database db = await database;
+
+    await db.insert(
+      _dbName,
+      expense.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
 }
