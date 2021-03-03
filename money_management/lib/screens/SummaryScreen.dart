@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../widgets/AppNavigationBar.dart';
 import '../widgets/StatisticPieChart.dart';
 import '../widgets/StatisticElement.dart';
 
@@ -29,19 +30,7 @@ class _SummaryScreen extends State<SummaryScreen> {
     };
 
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: onBNBClick,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: 'Add',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            label: 'Info',
-          ),
-        ],
-      ),
+      bottomNavigationBar: AppNavigationBar(1),
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Summary screen'),
@@ -70,11 +59,6 @@ class _SummaryScreen extends State<SummaryScreen> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: '+',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
