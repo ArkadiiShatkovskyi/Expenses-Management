@@ -21,6 +21,8 @@ class _DatePickerWidgetState extends State<DatePickerWidget>{
     if (picked != null && picked != _date)
       setState(() {
         _date = picked;
+        DateTime dtNow = DateTime.now();
+        _date = _date.add(Duration(hours: dtNow.hour, minutes: dtNow.minute, seconds: dtNow.second, milliseconds: dtNow.millisecond));
       });
   }
 
@@ -28,7 +30,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget>{
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => _chooseDate(context),
-      child: Text(_date.toString()),
+      child: Text(_date.toString().substring(0, 10)),
     );
   }
 }
