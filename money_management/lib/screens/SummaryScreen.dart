@@ -52,8 +52,28 @@ class _SummaryScreen extends State<SummaryScreen> {
             StatisticElement(elementLabel: "Food delivery", elementValue: 0.0),
             StatisticElement(elementLabel: "Electronics", elementValue: 0.0),
             StatisticElement(elementLabel: "Gifts", elementValue: 0.0),
-            Padding(
-              padding: EdgeInsets.only(top: height * 0.1),
+            SizedBox(
+              height: height * 0.1,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                backgroundBlendMode: BlendMode.darken,
+                color: Colors.purpleAccent.withAlpha(100),
+                border: Border.all(
+                  color: Colors.black,
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.circular(30),
+
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.8),
+                    spreadRadius: 4,
+                    blurRadius: 3,
+                    offset: Offset(7.0, 7.0),
+                  )
+                ],
+              ),
               child: StatisticPieChart(dataMap: dataMap,),
             ),
           ],
