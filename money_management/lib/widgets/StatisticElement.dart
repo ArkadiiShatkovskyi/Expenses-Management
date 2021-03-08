@@ -17,10 +17,10 @@ class StatisticElement extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-              width: width * 0.8,
+              width: width * 0.7,
               child: Divider(
                 height: height * 0.02,
-                color: Colors.black,
+                color: Colors.white,
               )),
           Padding(
             padding: EdgeInsets.only(left: width * 0.25),
@@ -28,17 +28,17 @@ class StatisticElement extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: width * 0.35,
+                  width: width * 0.3,
                   child: Text(
                     elementLabel,
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),
                 SizedBox(
-                  width: width * 0.35,
+                  width: width * 0.3,
                   child: Text(
                     elementValue.toString(),
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),
               ],
