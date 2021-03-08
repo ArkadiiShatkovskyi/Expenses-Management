@@ -5,7 +5,7 @@ import '../models/Expense.dart';
 import '../models/DBProvider.dart';
 import '../widgets/AppNavigationBar.dart';
 
-class AddExpense extends StatefulWidget{
+class AddExpense extends StatefulWidget {
 
   DBProvider _dbProvider;
 
@@ -15,7 +15,7 @@ class AddExpense extends StatefulWidget{
 
   @override
   _AddExpenseState createState() => _AddExpenseState();
-}
+  }
 
 class _AddExpenseState extends State<AddExpense> {
   DateTime _date = DateTime.now();
