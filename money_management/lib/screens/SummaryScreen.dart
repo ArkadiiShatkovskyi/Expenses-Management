@@ -30,10 +30,12 @@ class _SummaryScreen extends State<SummaryScreen> {
     };
 
     return Scaffold(
+      backgroundColor: Colors.black,
       bottomNavigationBar: AppNavigationBar(1),
       appBar: AppBar(
+        backgroundColor: Colors.white,
         centerTitle: true,
-        title: const Text('Summary screen'),
+        title: const Text('Summary screen', style: TextStyle(color: Colors.black),),
       ),
       body: Center(
         child: Column(
@@ -45,22 +47,8 @@ class _SummaryScreen extends State<SummaryScreen> {
             Container(
                 margin: EdgeInsets.only(left: width * 0.05, right: width * 0.05),
                 decoration: BoxDecoration(
-                  backgroundBlendMode: BlendMode.darken,
-                  color: Colors.deepPurple.withAlpha(200),
-                  border: Border.all(
-                    color: Colors.deepPurple.withAlpha(200),
-                    width: 1,
-                  ),
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(30),
-
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.8),
-                      spreadRadius: 4,
-                      blurRadius: 3,
-                      offset: Offset(7.0, 7.0),
-                    )
-                  ],
                 ),
                 child: DateElements(height: height, width: width,)),
             SizedBox(
@@ -68,21 +56,8 @@ class _SummaryScreen extends State<SummaryScreen> {
             ),
             Container(
               decoration: BoxDecoration(
-                backgroundBlendMode: BlendMode.darken,
-                color: Colors.deepPurple.withAlpha(200),
-                border: Border.all(
-                  color: Colors.deepPurple.withAlpha(200),
-                  width: 1,
-                ),
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(30),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.8),
-                    spreadRadius: 4,
-                    blurRadius: 3,
-                    offset: Offset(7.0, 7.0),
-                  )
-                ],
               ),
               child: StatisticPieChart(dataMap: dataMap,),
             ),
