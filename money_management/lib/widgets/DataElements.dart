@@ -16,7 +16,7 @@ class DateElements extends StatelessWidget{
           padding: EdgeInsets.only(bottom: width * 0.05),
           child: const Text(
             'Statistic',
-            style: TextStyle(fontSize: 20, color: Colors.white),
+            style: TextStyle(fontSize: 20, color: Colors.black),
           ),
         ),
           StatisticElement(elementLabel: "Saved", elementValue: 0.0),
