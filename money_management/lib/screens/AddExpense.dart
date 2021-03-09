@@ -81,7 +81,7 @@ class _AddExpenseState extends State<AddExpense> {
                   height: height * 0.04,
                   width: width * 0.4,
                   child: ElevatedButton.icon(
-                      onPressed: saveDate,
+                      onPressed: _showMyDialog,
                       icon: Icon(Icons.save_outlined),
                       label: const Text("Add new record")),
                 ),
@@ -107,5 +107,32 @@ class _AddExpenseState extends State<AddExpense> {
         }
         });
      **/
+  }
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Record was saved'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Record was saved to database.'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
