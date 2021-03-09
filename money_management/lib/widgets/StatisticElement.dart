@@ -13,6 +13,8 @@ class StatisticElement extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
+    Color colorElements = Colors.black;
+
     return Container(
       child: Column(
         children: [
@@ -20,7 +22,7 @@ class StatisticElement extends StatelessWidget {
               width: width * 0.7,
               child: Divider(
                 height: height * 0.02,
-                color: Colors.white,
+                color: colorElements,
               )),
           Padding(
             padding: EdgeInsets.only(left: width * 0.25),
@@ -31,14 +33,14 @@ class StatisticElement extends StatelessWidget {
                   width: width * 0.3,
                   child: Text(
                     elementLabel,
-                    style: TextStyle(fontSize: 16, color: Colors.white),
+                    style: TextStyle(fontSize: 16, color: colorElements),
                   ),
                 ),
                 SizedBox(
                   width: width * 0.3,
                   child: Text(
                     elementValue.toString(),
-                    style: TextStyle(fontSize: 16, color: Colors.white),
+                    style: TextStyle(fontSize: 16, color: colorElements),
                   ),
                 ),
               ],
