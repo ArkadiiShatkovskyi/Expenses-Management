@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 
 import '../models/Expense.dart';
 import '../models/DBProvider.dart';
-import '../widgets/AppNavigationBar.dart';
+import '../widgets/CustomBottomNavigationBar.dart';
 import '../widgets/AddRecordFields.dart';
 
 // ignore: must_be_immutable
@@ -35,7 +35,7 @@ class _AddExpenseState extends State<AddExpense> {
         centerTitle: true,
         title: const Text('Add new expense'),
       ),
-      bottomNavigationBar: AppNavigationBar(0),
+      bottomNavigationBar: CustomBottomNavigationBar(0),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
