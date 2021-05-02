@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../widgets/AppNavigationBar.dart';
+import '../widgets/CustomBottomNavigationBar.dart';
 import '../widgets/StatisticPieChart.dart';
 import '../widgets/DataElements.dart';
+import '../widgets/CustomAppBar.dart';
 
 class SummaryScreen extends StatefulWidget {
   SummaryScreen({Key key}) : super(key: key);
@@ -17,7 +18,6 @@ class _SummaryScreen extends State<SummaryScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
@@ -30,38 +30,65 @@ class _SummaryScreen extends State<SummaryScreen> {
     };
 
     return Scaffold(
-      backgroundColor: Colors.black,
-      bottomNavigationBar: AppNavigationBar(1),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        title: const Text('Summary screen', style: TextStyle(color: Colors.black),),
-      ),
+      bottomNavigationBar: CustomBottomNavigationBar(1),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(
-              height: height * 0.05,
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              stops: [
+                0.0,
+                0.5,
+                0.7,
+                0.8,
+              ],
+              colors: [
+                Colors.lightGreenAccent.withAlpha(150),
+                Colors.cyanAccent.withAlpha(150),
+                Colors.lightBlue.withAlpha(150),
+                Colors.blue.withAlpha(150),
+                //Colors.blueGrey,
+              ],
             ),
-            Container(
-                margin: EdgeInsets.only(left: width * 0.05, right: width * 0.05),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
+          ),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                SizedBox(
+                  height: height * 0.025,
                 ),
-                child: DateElements(height: height, width: width,)),
-            SizedBox(
-              height: height * 0.04,
+                CustomAppBar(width: width, height: height * 0.1),
+                SizedBox(
+                  height: height * 0.025,
+                ),
+                Container(
+                    margin: EdgeInsets.only(
+                        left: width * 0.05, right: width * 0.05),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: DateElements(
+                      height: height,
+                      width: width,
+                    )),
+                SizedBox(
+                  height: height * 0.04,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: StatisticPieChart(
+                    dataMap: dataMap,
+                  ),
+                ),
+              ],
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: StatisticPieChart(dataMap: dataMap,),
-            ),
-          ],
+          ),
         ),
       ),
     );
