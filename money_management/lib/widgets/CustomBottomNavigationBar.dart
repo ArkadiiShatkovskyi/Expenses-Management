@@ -23,15 +23,23 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       decoration: BoxDecoration(
         color: Colors.transparent.withAlpha(25),
       ),
-      child:ToggleButtons(
+      child: ToggleButtons(
         children: <Widget>[
-          Icon(Icons.info, c),
-          Icon(Icons.add),
-          Icon(Icons.settings),
+          Icon(
+            Icons.info,
+          ),
+          Icon(
+            Icons.add,
+          ),
+          Icon(
+            Icons.settings,
+          ),
         ],
         onPressed: (int index) {
           setState(() {
-            for (int buttonIndex = 0; buttonIndex < _selected.length; buttonIndex++) {
+            for (int buttonIndex = 0;
+                buttonIndex < _selected.length;
+                buttonIndex++) {
               if (buttonIndex == index) {
                 _selected[buttonIndex] = true;
               } else {
@@ -42,7 +50,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         },
         isSelected: _selected,
       ),
-      );
+    );
     /**
     return BottomNavigationBar(
         currentIndex: widget.itemIndex,
