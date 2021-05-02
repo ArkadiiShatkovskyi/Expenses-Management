@@ -4,20 +4,21 @@ import 'package:money_menagment/screens/AddExpense.dart';
 import 'package:money_menagment/screens/SummaryScreen.dart';
 
 // ignore: must_be_immutable
-class AppNavigationBar extends StatefulWidget{
+class CustomBottomNavigationBar extends StatefulWidget{
 
   int itemIndex;
 
-  AppNavigationBar(this.itemIndex);
+  CustomBottomNavigationBar(this.itemIndex);
 
   @override
-  _AppNavigationBarState createState() => _AppNavigationBarState();
+  _CustomBottomNavigationBarState createState() => _CustomBottomNavigationBarState();
 }
 
-class _AppNavigationBarState extends State<AppNavigationBar> {
+class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+        backgroundColor: Colors.transparent,
         currentIndex: widget.itemIndex,
         onTap: _onItemTapped,
         items: [
