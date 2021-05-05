@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
-  double width;
-  double height;
+  final double width;
+  final double height;
+  final String text;
 
-  CustomAppBar({this.width, this.height});
+  CustomAppBar({this.width, this.height, this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class CustomAppBar extends StatelessWidget {
       height: this.height,
       child: Center(
         child: Text(
-          "Summary screen",
+          this.text,
           style: TextStyle(
             color: Colors.black.withAlpha(175),
             fontSize: 25,
