@@ -3,16 +3,13 @@ import 'package:flutter/widgets.dart';
 
 import '../models/Expense.dart';
 import '../models/DBProvider.dart';
-import '../widgets/CustomBottomNavigationBar.dart';
 import '../widgets/AddRecordFields.dart';
 
-// ignore: must_be_immutable
 class AddExpense extends StatefulWidget {
-  DBProvider _dbProvider;
+  final DBProvider _dbProvider = DBProvider();
+  final Widget bottomNavigationBar;
 
-  AddExpense() {
-    _dbProvider = DBProvider();
-  }
+  AddExpense(this.bottomNavigationBar);
 
   @override
   _AddExpenseState createState() => _AddExpenseState();
@@ -85,7 +82,7 @@ class _AddExpenseState extends State<AddExpense> {
                 ),
               ],
             ),
-            CustomBottomNavigationBar(selectedOption: true),
+            widget.bottomNavigationBar,
           ],
         ),
       ),
