@@ -39,7 +39,7 @@ class SummaryScreen extends StatelessWidget {
             SizedBox(
               height: height * 0.04,
             ),
-            CustomAppBar(width: width, height: height * 0.1),
+            CustomAppBar(width: width, height: height * 0.1, text: "Summary screen",),
             SizedBox(
               height: height * 0.05,
             ),
