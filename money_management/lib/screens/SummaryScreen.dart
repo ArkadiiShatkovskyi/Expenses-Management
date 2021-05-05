@@ -6,14 +6,14 @@ import '../widgets/StatisticPieChart.dart';
 import '../widgets/DataElements.dart';
 import '../widgets/CustomAppBar.dart';
 import '../widgets/CustomContainer.dart';
+import '../widgets/GradientBackground.dart';
 
 // ignore: must_be_immutable
 class SummaryScreen extends StatelessWidget {
-
   Widget bottomNavigationBar;
 
-  SummaryScreen(this.bottomNavigationBar){
-    if(bottomNavigationBar == null){
+  SummaryScreen(this.bottomNavigationBar) {
+    if (bottomNavigationBar == null) {
       bottomNavigationBar = CustomBottomNavigationBar(selectedOption: false);
     }
   }
@@ -32,62 +32,39 @@ class SummaryScreen extends StatelessWidget {
     };
 
     return Scaffold(
-      body: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              stops: [
-                0.0,
-                0.5,
-                0.7,
-                0.8,
-              ],
-              colors: [
-                Colors.lightGreenAccent.withAlpha(150),
-                Colors.cyanAccent.withAlpha(150),
-                Colors.lightBlue.withAlpha(150),
-                Colors.blue.withAlpha(150),
-                //Colors.blueGrey,
-              ],
+      body: GradientBackGround(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(
+              height: height * 0.04,
             ),
-          ),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                SizedBox(
-                  height: height * 0.04,
-                ),
-                CustomAppBar(width: width, height: height * 0.1),
-                SizedBox(
-                  height: height * 0.05,
-                ),
-                CustomContainer(
-                    width: width,
-                    height: height,
-                    child: DateElements(
-                      height: height,
-                      width: width,
-                    )),
-                SizedBox(
-                  height: height * 0.04,
-                ),
-                CustomContainer(
-                  width: width,
+            CustomAppBar(width: width, height: height * 0.1),
+            SizedBox(
+              height: height * 0.05,
+            ),
+            CustomContainer(
+                width: width,
+                height: height,
+                child: DateElements(
                   height: height,
-                  child: StatisticPieChart(
-                    dataMap: dataMap,
-                  ),
-                ),
-                SizedBox(
-                  height: height * 0.075,
-                ),
-                bottomNavigationBar,
-              ],
+                  width: width,
+                )),
+            SizedBox(
+              height: height * 0.04,
             ),
-          ),
+            CustomContainer(
+              width: width,
+              height: height,
+              child: StatisticPieChart(
+                dataMap: dataMap,
+              ),
+            ),
+            SizedBox(
+              height: height * 0.075,
+            ),
+            bottomNavigationBar,
+          ],
         ),
       ),
     );
