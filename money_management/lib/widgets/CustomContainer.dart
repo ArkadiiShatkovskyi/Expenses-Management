@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CustomContainer extends StatelessWidget {
-  double width;
-  double height;
-  Widget child;
+  final double width;
+  final double height;
+  final Widget child;
 
   CustomContainer({this.width, this.height, this.child});
 
