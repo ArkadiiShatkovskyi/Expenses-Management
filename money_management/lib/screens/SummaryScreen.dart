@@ -5,6 +5,7 @@ import '../widgets/CustomBottomNavigationBar.dart';
 import '../widgets/StatisticPieChart.dart';
 import '../widgets/DataElements.dart';
 import '../widgets/CustomAppBar.dart';
+import '../widgets/CustomContainer.dart';
 
 class SummaryScreen extends StatefulWidget {
   SummaryScreen({Key key}) : super(key: key);
@@ -62,13 +63,9 @@ class _SummaryScreen extends State<SummaryScreen> {
                 SizedBox(
                   height: height * 0.05,
                 ),
-                Container(
-                    margin: EdgeInsets.only(
-                        left: width * 0.05, right: width * 0.05),
-                    decoration: BoxDecoration(
-                      color: Colors.transparent.withAlpha(25),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
+                CustomContainer(
+                    width: width,
+                    height: height,
                     child: DateElements(
                       height: height,
                       width: width,
@@ -76,11 +73,9 @@ class _SummaryScreen extends State<SummaryScreen> {
                 SizedBox(
                   height: height * 0.04,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.transparent.withAlpha(25),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
+                CustomContainer(
+                  width: width,
+                  height: height,
                   child: StatisticPieChart(
                     dataMap: dataMap,
                   ),
