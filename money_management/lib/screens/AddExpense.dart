@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../widgets/CustomAppBar.dart';
+import '../widgets/CustomContainer.dart';
+import '../widgets/GradientBackground.dart';
 import '../models/Expense.dart';
 import '../models/DBProvider.dart';
 import '../widgets/AddRecordFields.dart';
@@ -28,37 +31,21 @@ class _AddExpenseState extends State<AddExpense> {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Add new expense'),
-      ),
-      body: Center(
+      body: GradientBackGround(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(
-              height: height * 0.03,
-            ),
-            Container(
-              margin: EdgeInsets.only(left: width * 0.05, right: width * 0.05),
-              decoration: BoxDecoration(
-                backgroundBlendMode: BlendMode.darken,
-                color: Colors.deepPurple.withAlpha(200),
-                border: Border.all(
-                  color: Colors.deepPurple.withAlpha(200),
-                  width: 1,
-                ),
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.8),
-                    spreadRadius: 4,
-                    blurRadius: 3,
-                    offset: Offset(7.0, 7.0),
-                  )
-                ],
-              ),
-              child: AddRecordFields(
+          SizedBox(
+            height: height * 0.04,
+          ),
+          CustomAppBar(width: width, height: height * 0.1, text: "Add expenses",),
+          SizedBox(
+            height: height * 0.05,
+          ),
+          CustomContainer(
+            width: width,
+            height: height,
+            child: AddRecordFields(
                 height: height,
                 width: width,
                 tecCategory: _tecCategory,
