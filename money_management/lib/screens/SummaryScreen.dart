@@ -30,7 +30,6 @@ class _SummaryScreen extends State<SummaryScreen> {
     };
 
     return Scaffold(
-      bottomNavigationBar: CustomBottomNavigationBar(1),
       body: Center(
         child: Container(
           decoration: BoxDecoration(
@@ -57,11 +56,11 @@ class _SummaryScreen extends State<SummaryScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 SizedBox(
-                  height: height * 0.025,
+                  height: height * 0.04,
                 ),
                 CustomAppBar(width: width, height: height * 0.1),
                 SizedBox(
-                  height: height * 0.025,
+                  height: height * 0.05,
                 ),
                 Container(
                     margin: EdgeInsets.only(
@@ -86,6 +85,10 @@ class _SummaryScreen extends State<SummaryScreen> {
                     dataMap: dataMap,
                   ),
                 ),
+                SizedBox(
+                  height: height * 0.075,
+                ),
+                CustomBottomNavigationBar(selectedOption: false),
               ],
             ),
           ),
