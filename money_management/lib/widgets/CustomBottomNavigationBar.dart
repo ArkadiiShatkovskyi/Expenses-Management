@@ -27,7 +27,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           children: [
             IconButton(
               icon: const Icon(Icons.account_balance_wallet_outlined),
-              color: Colors.black,
+              color: Colors.deepPurple,
               splashColor: Colors.yellow,
               onPressed: widget.selectedOption
                   ? () {
@@ -35,7 +35,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => SummaryScreen()),
+                            builder: (context) => SummaryScreen(this.widget)),
                       );
                     }
                   : null,
@@ -43,14 +43,14 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             SizedBox(width: 20),
             IconButton(
               icon: const Icon(Icons.add),
-              color: Colors.black,
+              color: Colors.deepPurple,
               splashColor: Colors.yellow,
               onPressed: !widget.selectedOption
                   ? () {
                       widget.selectedOption = !widget.selectedOption;
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => AddExpense()),
+                        MaterialPageRoute(builder: (context) => AddExpense(this.widget)),
                       );
                     }
                   : null,
