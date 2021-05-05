@@ -7,15 +7,16 @@ import '../widgets/DataElements.dart';
 import '../widgets/CustomAppBar.dart';
 import '../widgets/CustomContainer.dart';
 
-class SummaryScreen extends StatefulWidget {
-  SummaryScreen({Key key}) : super(key: key);
+// ignore: must_be_immutable
+class SummaryScreen extends StatelessWidget {
 
-  @override
-  _SummaryScreen createState() => _SummaryScreen();
-}
+  Widget bottomNavigationBar;
 
-class _SummaryScreen extends State<SummaryScreen> {
-  void onBNBClick(int value) {}
+  SummaryScreen(this.bottomNavigationBar){
+    if(bottomNavigationBar == null){
+      bottomNavigationBar = CustomBottomNavigationBar(selectedOption: false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +84,7 @@ class _SummaryScreen extends State<SummaryScreen> {
                 SizedBox(
                   height: height * 0.075,
                 ),
-                CustomBottomNavigationBar(selectedOption: false),
+                bottomNavigationBar,
               ],
             ),
           ),
