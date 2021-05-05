@@ -35,7 +35,6 @@ class _AddExpenseState extends State<AddExpense> {
         centerTitle: true,
         title: const Text('Add new expense'),
       ),
-      bottomNavigationBar: CustomBottomNavigationBar(0),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -53,7 +52,6 @@ class _AddExpenseState extends State<AddExpense> {
                   width: 1,
                 ),
                 borderRadius: BorderRadius.circular(30),
-
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.8),
@@ -87,6 +85,7 @@ class _AddExpenseState extends State<AddExpense> {
                 ),
               ],
             ),
+            CustomBottomNavigationBar(selectedOption: true),
           ],
         ),
       ),
