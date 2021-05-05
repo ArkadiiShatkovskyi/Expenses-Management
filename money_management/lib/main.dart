@@ -48,7 +48,7 @@ class MyHomePage extends StatelessWidget {
               ],
             ),
           ),
-          child: SummaryScreen(),
+          child: SummaryScreen(null),
         ),
       ),
     );
