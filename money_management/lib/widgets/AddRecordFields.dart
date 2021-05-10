@@ -27,7 +27,7 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
       children: [
         Container(
           padding: EdgeInsets.only(
-              top: widget.height * 0.025, bottom: widget.width * 0.05),
+              top: widget.height * 0.02, bottom: widget.width * 0.05),
           child: const Text(
             'Add new record',
             style: TextStyle(fontSize: 22, color: Colors.black),
@@ -38,30 +38,36 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
           children: [
             Container(
               height: widget.height * 0.07,
-              width: widget.width * 0.2,
+              width: widget.width * 0.25,
               padding: const EdgeInsets.only(right: 20),
-              child: const Text(
-                "Price",
-                style: TextStyle(color: Colors.black, fontSize: 18),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: const Text(
+                  "Price",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
               ),
             ),
             Container(
               width: widget.width * 0.4,
               height: widget.height * 0.07,
-              child: TextFormField(
-                style: TextStyle(color: Colors.black),
-                controller: widget.tecPrice,
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
-                decoration: const InputDecoration(
-                  hintText: 'Enter a price',
-                  hintStyle: TextStyle(color: Colors.black, fontSize: 18),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: TextFormField(
+                  style: TextStyle(color: Colors.black),
+                  controller: widget.tecPrice,
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  decoration: const InputDecoration(
+                    hintText: 'Enter a price',
+                    hintStyle: TextStyle(color: Colors.black, fontSize: 18),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please enter a price';
+                    }
+                    return null;
+                  },
                 ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please enter a price';
-                  }
-                  return null;
-                },
               ),
             ),
           ],
@@ -71,29 +77,35 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
           children: [
             Container(
               height: widget.height * 0.07,
-              width: widget.width * 0.2,
+              width: widget.width * 0.25,
               padding: const EdgeInsets.only(right: 20),
-              child: const Text(
-                "Category",
-                style: TextStyle(color: Colors.black, fontSize: 18),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: const Text(
+                  "Category",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
               ),
             ),
             Container(
               width: widget.width * 0.4,
               height: widget.height * 0.07,
-              child: TextFormField(
-                style: TextStyle(color: Colors.black),
-                controller: widget.tecCategory,
-                decoration: const InputDecoration(
-                  hintText: 'Enter a category',
-                  hintStyle: TextStyle(color: Colors.black, fontSize: 18),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: TextFormField(
+                  style: TextStyle(color: Colors.black),
+                  controller: widget.tecCategory,
+                  decoration: const InputDecoration(
+                    hintText: 'Enter a category',
+                    hintStyle: TextStyle(color: Colors.black, fontSize: 18),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Choose a category';
+                    }
+                    return null;
+                  },
                 ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Choose a category';
-                  }
-                  return null;
-                },
               ),
             ),
           ],
@@ -103,29 +115,35 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
           children: [
             Container(
               height: widget.height * 0.07,
-              width: widget.width * 0.2,
+              width: widget.width * 0.25,
               padding: const EdgeInsets.only(right: 20),
-              child: const Text(
-                "Place",
-                style: TextStyle(color: Colors.black, fontSize: 18),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: const Text(
+                  "Place",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
               ),
             ),
             Container(
               width: widget.width * 0.4,
               height: widget.height * 0.07,
-              child: TextFormField(
-                style: TextStyle(color: Colors.black),
-                controller: widget.tecPlace,
-                decoration: const InputDecoration(
-                  hintText: 'Enter a place',
-                  hintStyle: TextStyle(color: Colors.black, fontSize: 18),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: TextFormField(
+                  style: TextStyle(color: Colors.black),
+                  controller: widget.tecPlace,
+                  decoration: const InputDecoration(
+                    hintText: 'Enter a place',
+                    hintStyle: TextStyle(color: Colors.black, fontSize: 18),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Enter a place';
+                    }
+                    return null;
+                  },
                 ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Enter a place';
-                  }
-                  return null;
-                },
               ),
             ),
           ],
@@ -135,11 +153,14 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
           children: [
             Container(
               height: widget.height * 0.07,
-              width: widget.width * 0.2,
+              width: widget.width * 0.25,
               padding: const EdgeInsets.only(right: 20),
-              child: const Text(
-                "Date",
-                style: TextStyle(color: Colors.black, fontSize: 18),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: const Text(
+                  "Date",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
               ),
             ),
             Container(
@@ -148,13 +169,19 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
               padding: EdgeInsets.only(top: widget.height * 0.005),
               child: GestureDetector(
                 onTap: () => _chooseDate(context),
-                child: Text(
-                  widget._date.toString().substring(0, 10),
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    widget._date.toString().substring(0, 10),
+                    style: TextStyle(color: Colors.black, fontSize: 18),
+                  ),
                 ),
               ),
             ),
           ],
+        ),
+        SizedBox(
+          height: widget.height * 0.05,
         ),
       ],
     );
