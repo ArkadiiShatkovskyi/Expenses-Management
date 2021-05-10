@@ -68,11 +68,34 @@ class _AddExpenseState extends State<AddExpense> {
                 children: [
                   Container(
                     height: height * 0.04,
-                    width: width * 0.4,
+                    width: width * 0.55,
                     child: ElevatedButton.icon(
+                        style: ButtonStyle(
+                          //backgroundColor: MaterialStateProperty.all(Colors.indigoAccent.withAlpha(125)),
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.transparent),
+                          shadowColor:
+                              MaterialStateProperty.all(Colors.transparent),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              side: BorderSide(color: Colors.black.withAlpha(190)),
+                            ),
+                          ),
+                        ),
                         onPressed: _showMyDialog,
-                        icon: Icon(Icons.save_outlined),
-                        label: const Text("Add new record")),
+                        icon: Icon(
+                          Icons.save_outlined,
+                          color: Colors.black.withAlpha(190),
+                        ),
+                        label: Text(
+                          "Add new record",
+                          style: TextStyle(
+                            color: Colors.black.withAlpha(190),
+                            fontSize: 17,
+                          ),
+                        )),
                   ),
                 ],
               ),
