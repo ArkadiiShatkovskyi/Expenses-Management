@@ -32,39 +32,46 @@ class SummaryScreen extends StatelessWidget {
     };
 
     return Scaffold(
-      body: GradientBackGround(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(
-              height: height * 0.04,
-            ),
-            CustomAppBar(width: width, height: height * 0.1, text: "Summary screen",),
-            SizedBox(
-              height: height * 0.05,
-            ),
-            CustomContainer(
+      body: Container(
+        height: height,
+        width: width,
+        child: GradientBackGround(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(
+                height: height * 0.04,
+              ),
+              CustomAppBar(width: width, height: height * 0.1, text: "Summary screen",),
+              SizedBox(
+                height: height * 0.05,
+              ),
+              CustomContainer(
+                  width: width,
+                  height: height,
+                  child: DateElements(
+                    height: height,
+                    width: width,
+                  )),
+              SizedBox(
+                height: height * 0.04,
+              ),
+              CustomContainer(
                 width: width,
                 height: height,
-                child: DateElements(
-                  height: height,
-                  width: width,
-                )),
-            SizedBox(
-              height: height * 0.04,
-            ),
-            CustomContainer(
-              width: width,
-              height: height,
-              child: StatisticPieChart(
-                dataMap: dataMap,
+                child: StatisticPieChart(
+                  dataMap: dataMap,
+                ),
               ),
-            ),
-            SizedBox(
-              height: height * 0.075,
-            ),
-            bottomNavigationBar,
-          ],
+              SizedBox(
+                height: height * 0.075,
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: bottomNavigationBar,
+              ),
+            ],
+          ),
         ),
       ),
     );
