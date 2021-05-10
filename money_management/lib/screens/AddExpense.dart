@@ -31,46 +31,57 @@ class _AddExpenseState extends State<AddExpense> {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: GradientBackGround(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-          SizedBox(
-            height: height * 0.04,
-          ),
-          CustomAppBar(width: width, height: height * 0.1, text: "Add expenses",),
-          SizedBox(
-            height: height * 0.05,
-          ),
-          CustomContainer(
-            width: width,
-            height: height,
-            child: AddRecordFields(
-                height: height,
-                width: width,
-                tecCategory: _tecCategory,
-                tecPlace: _tecPlace,
-                tecPrice: _tecPrice,
+      body: Container(
+        width: width,
+        height: height,
+        child: GradientBackGround(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: height * 0.04,
               ),
-            ),
-            SizedBox(
-              height: height * 0.03,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: height * 0.04,
-                  width: width * 0.4,
-                  child: ElevatedButton.icon(
-                      onPressed: _showMyDialog,
-                      icon: Icon(Icons.save_outlined),
-                      label: const Text("Add new record")),
+              CustomAppBar(
+                width: width,
+                height: height * 0.1,
+                text: "Add expenses",
+              ),
+              SizedBox(
+                height: height * 0.05,
+              ),
+              CustomContainer(
+                width: width,
+                height: height,
+                child: AddRecordFields(
+                  height: height,
+                  width: width,
+                  tecCategory: _tecCategory,
+                  tecPlace: _tecPlace,
+                  tecPrice: _tecPrice,
                 ),
-              ],
-            ),
-            widget.bottomNavigationBar,
-          ],
+              ),
+              SizedBox(
+                height: height * 0.03,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: height * 0.04,
+                    width: width * 0.4,
+                    child: ElevatedButton.icon(
+                        onPressed: _showMyDialog,
+                        icon: Icon(Icons.save_outlined),
+                        label: const Text("Add new record")),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: height * 0.25,
+              ),
+              widget.bottomNavigationBar,
+            ],
+          ),
         ),
       ),
     );
