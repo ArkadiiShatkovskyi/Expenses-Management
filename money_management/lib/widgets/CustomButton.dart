@@ -14,7 +14,7 @@ class CustomButton extends StatelessWidget {
         //backgroundColor: MaterialStateProperty.all(Colors.indigoAccent.withAlpha(125)),
         backgroundColor: MaterialStateProperty.all(Colors.transparent),
         shadowColor: MaterialStateProperty.all(
-          Colors.indigoAccent.withAlpha(100),
+          Colors.indigoAccent,
         ),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
@@ -27,12 +27,12 @@ class CustomButton extends StatelessWidget {
       icon: Icon(
         this.icon,
         //color: Colors.black.withAlpha(220),
-        color: Colors.indigo,
+        color: Colors.white.withAlpha(220),
       ),
       label: Text(
         this.text,
         style: TextStyle(
-          color: Colors.black.withAlpha(220),
+          color: Colors.white.withAlpha(220),
           fontSize: 17,
         ),
       ),
