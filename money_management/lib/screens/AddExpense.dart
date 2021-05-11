@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../widgets/CustomMessageBox.dart';
 import '../widgets/CustomButton.dart';
 import '../widgets/CustomAppBar.dart';
 import '../widgets/CustomContainer.dart';
@@ -110,7 +111,13 @@ class _AddExpenseState extends State<AddExpense> {
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
-        return AlertDialog(
+        return CustomMessageBox(
+          title: 'Record was saved',
+          message: 'Record was saved to database.',
+        );
+
+        /**
+          AlertDialog(
           title: Text('Record was saved'),
           content: SingleChildScrollView(
             child: ListBody(
@@ -128,6 +135,7 @@ class _AddExpenseState extends State<AddExpense> {
             ),
           ],
         );
+          **/
       },
     );
   }
