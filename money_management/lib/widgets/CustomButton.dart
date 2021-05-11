@@ -13,23 +13,26 @@ class CustomButton extends StatelessWidget {
       style: ButtonStyle(
         //backgroundColor: MaterialStateProperty.all(Colors.indigoAccent.withAlpha(125)),
         backgroundColor: MaterialStateProperty.all(Colors.transparent),
-        shadowColor: MaterialStateProperty.all(Colors.transparent),
+        shadowColor: MaterialStateProperty.all(
+          Colors.indigoAccent.withAlpha(100),
+        ),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
-            side: BorderSide(color: Colors.black.withAlpha(190)),
+            side: BorderSide(color: Colors.black.withAlpha(100)),
           ),
         ),
       ),
       onPressed: this.onPressed,
       icon: Icon(
         this.icon,
-        color: Colors.black.withAlpha(190),
+        //color: Colors.black.withAlpha(220),
+        color: Colors.indigo,
       ),
       label: Text(
         this.text,
         style: TextStyle(
-          color: Colors.black.withAlpha(190),
+          color: Colors.black.withAlpha(220),
           fontSize: 17,
         ),
       ),
