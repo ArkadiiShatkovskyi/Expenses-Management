@@ -63,13 +63,13 @@ class _AddExpenseState extends State<AddExpense> {
                 ),
               ),
               SizedBox(
-                height: height * 0.03,
+                height: height * 0.06,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    height: height * 0.04,
+                    height: height * 0.06,
                     width: width * 0.55,
                     child: CustomButton(
                       text: "Add new record",
@@ -80,7 +80,7 @@ class _AddExpenseState extends State<AddExpense> {
                 ],
               ),
               SizedBox(
-                height: height * 0.25,
+                height: height * 0.2,
               ),
               widget.bottomNavigationBar,
             ],
@@ -115,27 +115,6 @@ class _AddExpenseState extends State<AddExpense> {
           title: 'Record was saved',
           message: 'Record was saved to database.',
         );
-
-        /**
-          AlertDialog(
-          title: Text('Record was saved'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text('Record was saved to database.'),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text('Ok'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-          **/
       },
     );
   }
