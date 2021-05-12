@@ -60,6 +60,7 @@ class _AddExpenseState extends State<AddExpense> {
                   tecCategory: _tecCategory,
                   tecPlace: _tecPlace,
                   tecPrice: _tecPrice,
+                  date: _date,
                 ),
               ),
               SizedBox(
@@ -74,7 +75,7 @@ class _AddExpenseState extends State<AddExpense> {
                     child: CustomButton(
                       text: "Add new record",
                       icon: Icons.save_outlined,
-                      onPressed: _showMyDialog,
+                      onPressed: saveDate,
                     ),
                   ),
                 ],
@@ -91,29 +92,45 @@ class _AddExpenseState extends State<AddExpense> {
   }
 
   void saveDate() {
-    Expense expense = new Expense(
-        category: _tecCategory.text,
-        place: _tecPlace.text,
-        price: double.parse(_tecPrice.text),
-        date: _date);
-    widget._dbProvider.insertExpense(expense);
-    /** //Data base connection test
-        widget._dbProvider.expenses().then((list) {
-        for(Expense l in list){
-        print("Category: " + l.category + ", Price: " + l.price.toString() + ", Date: " + _date.toString());
-        }
-        });
-     **/
+    _showData();
+    if (_tecCategory.value.text == "" ||
+        _tecPlace.value.text == "" ||
+        _tecPrice.value.text == "") {
+      _showMyDialog("Enter required fields", "Price, Category or Place was not filled!");
+    } else {
+      DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
+      Expense expense = new Expense(
+          category: _tecCategory.text,
+          place: _tecPlace.text,
+          price: double.parse(_tecPrice.text),
+          date: _date);
+      widget._dbProvider.insertExpense(expense);
+      _showMyDialog("Record was saved", "Record was saved to database.");
+    }
   }
 
-  Future<void> _showMyDialog() async {
+  void _showData() {
+    //Data base connection test
+    widget._dbProvider.expenses().then((list) {
+      for (Expense l in list) {
+        print("Category: " +
+            l.category +
+            ", Price: " +
+            l.price.toString() +
+            ", Date: " +
+            _date.toString());
+      }
+    });
+  }
+
+  Future<void> _showMyDialog(String title, String message) async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return CustomMessageBox(
-          title: 'Record was saved',
-          message: 'Record was saved to database.',
+          title: title,
+          message: message,
         );
       },
     );
