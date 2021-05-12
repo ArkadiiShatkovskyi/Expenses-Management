@@ -7,14 +7,15 @@ class AddRecordFields extends StatefulWidget {
   final TextEditingController tecPrice;
   final TextEditingController tecCategory;
   final TextEditingController tecPlace;
-  DateTime _date = DateTime.now();
+  DateTime date;
 
   AddRecordFields(
       {this.height,
       this.width,
       this.tecPrice,
       this.tecPlace,
-      this.tecCategory});
+      this.tecCategory,
+      this.date});
 
   @override
   _AddRecordFieldsState createState() => _AddRecordFieldsState();
@@ -172,7 +173,7 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    widget._date.toString().substring(0, 10),
+                    widget.date.toString().substring(0, 10),
                     style: TextStyle(color: Colors.black, fontSize: 18),
                   ),
                 ),
@@ -190,15 +191,15 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
   void _chooseDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
       context: context,
-      initialDate: widget._date, // Refer step 1
+      initialDate: widget.date, // Refer step 1
       firstDate: DateTime(2000),
       lastDate: DateTime(2025),
     );
-    if (picked != null && picked != widget._date)
+    if (picked != null && picked != widget.date)
       setState(() {
-        widget._date = picked;
+        widget.date = picked;
         DateTime dtNow = DateTime.now();
-        widget._date = widget._date.add(Duration(
+        widget.date = widget.date.add(Duration(
             hours: dtNow.hour,
             minutes: dtNow.minute,
             seconds: dtNow.second,
