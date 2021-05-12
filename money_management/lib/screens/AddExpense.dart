@@ -110,6 +110,10 @@ class _AddExpenseState extends State<AddExpense> {
           date: dateTime);
       widget._dbProvider.insertExpense(expense);
       _showMyDialog("Record was saved", "Record was saved to database.");
+      _tecCategory.text = "";
+      _tecPlace.text = "";
+      _tecPrice.text = "";
+      _date = DateTime.now();
     }
   }
 
