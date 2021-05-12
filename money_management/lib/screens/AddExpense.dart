@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 
 import '../widgets/CustomMessageBox.dart';
 import '../widgets/CustomButton.dart';
@@ -99,11 +100,13 @@ class _AddExpenseState extends State<AddExpense> {
       _showMyDialog("Enter required fields", "Price, Category or Place was not filled!");
     } else {
       DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
+      String date = dateFormat.format(_date);
+      DateTime dateTime = dateFormat.parse(date);
       Expense expense = new Expense(
           category: _tecCategory.text,
           place: _tecPlace.text,
           price: double.parse(_tecPrice.text),
-          date: _date);
+          date: dateTime);
       widget._dbProvider.insertExpense(expense);
       _showMyDialog("Record was saved", "Record was saved to database.");
     }
