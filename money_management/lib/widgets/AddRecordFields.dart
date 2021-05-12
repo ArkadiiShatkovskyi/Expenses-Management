@@ -5,17 +5,12 @@ class AddRecordFields extends StatefulWidget {
   final double height;
   final double width;
   final TextEditingController tecPrice;
-  final TextEditingController tecCategory;
   final TextEditingController tecPlace;
+  final Widget dropDownMenu;
   DateTime date;
 
   AddRecordFields(
-      {this.height,
-      this.width,
-      this.tecPrice,
-      this.tecPlace,
-      this.tecCategory,
-      this.date});
+      {this.height, this.width, this.tecPrice, this.tecPlace, this.date, this.dropDownMenu});
 
   @override
   _AddRecordFieldsState createState() => _AddRecordFieldsState();
@@ -91,23 +86,7 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
             Container(
               width: widget.width * 0.4,
               height: widget.height * 0.07,
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: TextFormField(
-                  style: TextStyle(color: Colors.black),
-                  controller: widget.tecCategory,
-                  decoration: const InputDecoration(
-                    hintText: 'Enter a category',
-                    hintStyle: TextStyle(color: Colors.black, fontSize: 18),
-                  ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Choose a category';
-                    }
-                    return null;
-                  },
-                ),
-              ),
+              child: widget.dropDownMenu,
             ),
           ],
         ),
