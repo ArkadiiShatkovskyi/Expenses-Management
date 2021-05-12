@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 
+import '../widgets/DropDownCategorySelect.dart';
 import '../widgets/CustomMessageBox.dart';
 import '../widgets/CustomButton.dart';
 import '../widgets/CustomAppBar.dart';
@@ -14,6 +15,7 @@ import '../widgets/AddRecordFields.dart';
 class AddExpense extends StatefulWidget {
   final DBProvider _dbProvider = DBProvider();
   final Widget bottomNavigationBar;
+  final DropDownCategorySelect categorySelect = DropDownCategorySelect();
 
   AddExpense(this.bottomNavigationBar);
 
@@ -25,7 +27,6 @@ class _AddExpenseState extends State<AddExpense> {
   DateTime _date = DateTime.now();
 
   TextEditingController _tecPrice = new TextEditingController();
-  TextEditingController _tecCategory = new TextEditingController();
   TextEditingController _tecPlace = new TextEditingController();
 
   @override
@@ -59,10 +60,10 @@ class _AddExpenseState extends State<AddExpense> {
                 child: AddRecordFields(
                   height: height,
                   width: width,
-                  tecCategory: _tecCategory,
                   tecPlace: _tecPlace,
                   tecPrice: _tecPrice,
                   date: _date,
+                  dropDownMenu: widget.categorySelect,
                 ),
               ),
               SizedBox(
@@ -95,22 +96,23 @@ class _AddExpenseState extends State<AddExpense> {
 
   void saveDate() {
     _showData();
-    if (_tecCategory.value.text == "" ||
-        _tecPlace.value.text == "" ||
-        _tecPrice.value.text == "") {
-      _showMyDialog("Enter required fields", "Price, Category or Place was not filled!");
+    if (_tecPlace.value.text == "" || _tecPrice.value.text == "") {
+      _showMyDialog(
+          "Enter required fields", "Price, Category or Place was not filled!");
     } else {
+      String category = widget.categorySelect.getValue();
+
       DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
       String date = dateFormat.format(_date);
       DateTime dateTime = dateFormat.parse(date);
+
       Expense expense = new Expense(
-          category: _tecCategory.text,
+          category: category,
           place: _tecPlace.text,
           price: double.parse(_tecPrice.text),
           date: dateTime);
       widget._dbProvider.insertExpense(expense);
       _showMyDialog("Record was saved", "Record was saved to database.");
-      _tecCategory.text = "";
       _tecPlace.text = "";
       _tecPrice.text = "";
       _date = DateTime.now();
