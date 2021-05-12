@@ -34,6 +34,7 @@ class _AddExpenseState extends State<AddExpense> {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         width: width,
         height: height,
