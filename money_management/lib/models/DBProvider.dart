@@ -60,10 +60,10 @@ class DBProvider{
 
     List<Expense> listOfElements = await expenses();
 
-    print("LIST: " + listOfElements.toString());
+    //print("LIST: " + listOfElements.toString());
 
     for(Expense e in listOfElements){
-      dataMap.forEach((key, value) { if(key == e.category) value += e.price; });
+      dataMap.forEach((key, value) { if(key == e.category) dataMap.update(key, (dynamic val) => val + e.price);});
     }
 
     return dataMap;
