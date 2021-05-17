@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:money_menagment/models/Expense.dart';
-
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+
+import '../models/Expense.dart';
 
 class DBProvider{
 
@@ -37,7 +37,6 @@ class DBProvider{
     final Database db = await database;
 
     final List<Map<String, dynamic>> maps = await db.query(_dbName);
-
     return List.generate(maps.length, (i) {
       return Expense(
         category: maps[i]['category'],
@@ -46,6 +45,28 @@ class DBProvider{
         date: DateTime.parse(maps[i]['date']),
       );
     });
+  }
+
+  Future<Map<String, double>> expensesByGroup() async {
+
+    Map<String, double> dataMap = {
+      "Food": 0.0,
+      "Electronic": 0.0,
+      "Food delivery": 0.0,
+      "Clothes": 0.0,
+      "Vape": 0.0,
+      "Other": 0.0,
+    };
+
+    List<Expense> listOfElements = await expenses();
+
+    print("LIST: " + listOfElements.toString());
+
+    for(Expense e in listOfElements){
+      dataMap.forEach((key, value) { if(key == e.category) value += e.price; });
+    }
+
+    return dataMap;
   }
 
   Future<void> deleteExpense(String date) async {
@@ -59,6 +80,14 @@ class DBProvider{
     );
   }
 
+  Future<void> clearDataBase() async {
+    final db = await database;
+
+    // Remove the Expense from the Database.
+    await db.delete(_dbName);
+    db.close();
+  }
+
   Future<void> insertExpense(Expense expense) async {
     final Database db = await database;
 
@@ -67,5 +96,6 @@ class DBProvider{
       expense.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+    db.close();
   }
 }
