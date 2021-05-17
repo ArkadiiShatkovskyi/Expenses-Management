@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../models/DBProvider.dart';
 import '../widgets/CustomBottomNavigationBar.dart';
 import '../widgets/StatisticPieChart.dart';
 import '../widgets/DataElements.dart';
@@ -9,7 +10,7 @@ import '../widgets/CustomContainer.dart';
 import '../widgets/GradientBackground.dart';
 
 // ignore: must_be_immutable
-class SummaryScreen extends StatelessWidget {
+class SummaryScreen extends StatefulWidget {
   Widget bottomNavigationBar;
 
   SummaryScreen(this.bottomNavigationBar) {
@@ -19,10 +20,27 @@ class SummaryScreen extends StatelessWidget {
   }
 
   @override
+  _SummaryScreenState createState() => _SummaryScreenState();
+}
+
+class _SummaryScreenState extends State<SummaryScreen> {
+  final DBProvider _dbProvider = DBProvider();
+
+  Map<String, double> dataMap = {
+    "Food": 0.0,
+    "Electronic": 0.0,
+    "Food delivery": 0.0,
+    "Clothes": 0.0,
+    "Vape": 0.0,
+    "Other": 0.0,
+  };
+
+  @override
   Widget build(BuildContext context) {
+    getData();
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-
+/**
     Map<String, double> dataMap = {
       "Food": 700,
       "Electronic": 400,
@@ -31,7 +49,7 @@ class SummaryScreen extends StatelessWidget {
       "Vape": 100,
       "Other": 100,
     };
-
+**/
     return Scaffold(
       body: Container(
         height: height,
@@ -75,12 +93,20 @@ class SummaryScreen extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: bottomNavigationBar,
+                child: widget.bottomNavigationBar,
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void getData() {
+    _dbProvider.expensesByGroup().then((value) {
+      setState(() {
+        this.dataMap = value;
+      });
+    });
   }
 }
