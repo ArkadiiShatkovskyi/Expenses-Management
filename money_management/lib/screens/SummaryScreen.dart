@@ -24,11 +24,12 @@ class SummaryScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
 
     Map<String, double> dataMap = {
-      "Saved": 700,
-      "Food": 400,
+      "Food": 700,
+      "Electronic": 400,
       "Food delivery": 60,
-      "Electronics": 150,
-      "Gifts": 100,
+      "Clothes": 150,
+      "Vape": 100,
+      "Other": 100,
     };
 
     return Scaffold(
@@ -42,17 +43,23 @@ class SummaryScreen extends StatelessWidget {
               SizedBox(
                 height: height * 0.04,
               ),
-              CustomAppBar(width: width, height: height * 0.1, text: "Summary screen",),
+              CustomAppBar(
+                width: width,
+                height: height * 0.1,
+                text: "Summary screen",
+              ),
               SizedBox(
-                height: height * 0.05,
+                height: height * 0.03,
               ),
               CustomContainer(
-                  width: width,
+                width: width,
+                height: height,
+                child: DateElements(
                   height: height,
-                  child: DateElements(
-                    height: height,
-                    width: width,
-                  )),
+                  width: width,
+                  dataMap: dataMap,
+                ),
+              ),
               SizedBox(
                 height: height * 0.04,
               ),
@@ -64,7 +71,7 @@ class SummaryScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: height * 0.075,
+                height: height * 0.049,
               ),
               Align(
                 alignment: Alignment.bottomCenter,
