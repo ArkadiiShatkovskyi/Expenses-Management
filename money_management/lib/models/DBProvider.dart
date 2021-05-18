@@ -85,7 +85,6 @@ class DBProvider{
 
     // Remove the Expense from the Database.
     await db.delete(_dbName);
-    db.close();
   }
 
   Future<void> insertExpense(Expense expense) async {
@@ -96,6 +95,10 @@ class DBProvider{
       expense.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+  }
+
+  void closeDBConnection() async {
+    final Database db = await database;
     db.close();
   }
 }
