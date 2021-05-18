@@ -15,8 +15,14 @@ class Expense {
     };
   }
 
-  String getDate(){
-    return date.toString().substring(0, 10);
+  String getDate() {
+    int day = date.day;
+    int month = date.month;
+    String dayS = day.toString();
+    String monthS = month.toString();
+    if (day < 10) dayS = "0" + day.toString();
+    if (month < 10) monthS = "0" + month.toString();
+    return dayS + ":" + monthS;
   }
 
   String toString() {
