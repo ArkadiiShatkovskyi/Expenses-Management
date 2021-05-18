@@ -95,7 +95,7 @@ class _AddExpenseState extends State<AddExpense> {
   }
 
   void saveDate() {
-    //widget._dbProvider.clearDataBase();
+    widget._dbProvider.clearDataBase();
     _showData();
     if (_tecPlace.value.text == "" || _tecPrice.value.text == "") {
       _showMyDialog(
@@ -106,14 +106,14 @@ class _AddExpenseState extends State<AddExpense> {
       DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
       String date = dateFormat.format(_date);
       DateTime dateTime = dateFormat.parse(date);
-
+/**
       Expense expense = new Expense(
           category: category,
           place: _tecPlace.text,
           price: double.parse(_tecPrice.text),
           date: dateTime);
       widget._dbProvider.insertExpense(expense);
-
+**/
       _showMyDialog("Record was saved", "Record was saved to database.");
       _tecPlace.text = "";
       _tecPrice.text = "";
@@ -122,7 +122,6 @@ class _AddExpenseState extends State<AddExpense> {
   }
 
   void _showData() {
-    //Data base connection test
     widget._dbProvider.expenses().then((list) {
       for (Expense l in list) {
         print("Category: " +
