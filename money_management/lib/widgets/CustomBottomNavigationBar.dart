@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
 import '../screens/AddExpense.dart';
 import '../screens/SummaryScreen.dart';
+import '../screens/ListOfExpensesScreen.dart';
 
 // ignore: must_be_immutable
 class CustomBottomNavigationBar extends StatefulWidget {
-  bool selectedOption;
+  //bool selectedOption;
+  int selectedOption;
   CustomBottomNavigationBar({this.selectedOption});
 
   @override
@@ -27,9 +30,9 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             icon: const Icon(Icons.account_balance_wallet_outlined),
             color: Colors.deepPurple,
             splashColor: Colors.yellow,
-            onPressed: widget.selectedOption
+            onPressed: widget.selectedOption == 1 || widget.selectedOption == 2
                 ? () {
-                    widget.selectedOption = !widget.selectedOption;
+                    widget.selectedOption = 0;
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
@@ -43,13 +46,30 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             icon: const Icon(Icons.add),
             color: Colors.deepPurple,
             splashColor: Colors.yellow,
-            onPressed: !widget.selectedOption
+            onPressed: widget.selectedOption == 0 || widget.selectedOption == 2
                 ? () {
-                    widget.selectedOption = !widget.selectedOption;
+                    widget.selectedOption = 1;
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                           builder: (context) => AddExpense(this.widget)),
+                    );
+                  }
+                : null,
+          ),
+          SizedBox(width: 20),
+          IconButton(
+            icon: const Icon(Icons.list),
+            color: Colors.deepPurple,
+            splashColor: Colors.yellow,
+            onPressed: widget.selectedOption == 0 || widget.selectedOption == 1
+                ? () {
+                    widget.selectedOption = 2;
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              ListOfExpensesScreen(this.widget)),
                     );
                   }
                 : null,
