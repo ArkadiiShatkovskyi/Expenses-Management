@@ -51,54 +51,95 @@ class _SummaryScreenState extends State<SummaryScreen> {
     };
 **/
     return Scaffold(
-      body: Container(
-        height: height,
-        width: width,
-        child: GradientBackGround(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(
-                height: height * 0.04,
-              ),
-              CustomAppBar(
-                width: width,
-                height: height * 0.1,
-                text: "Summary screen",
-              ),
-              SizedBox(
-                height: height * 0.03,
-              ),
-              CustomContainer(
-                width: width,
-                height: height,
-                child: DateElements(
-                  height: height,
-                  width: width,
-                  dataMap: dataMap,
+      body: isDataEmpty()
+          ? Container(
+              height: height,
+              width: width,
+              child: GradientBackGround(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(
+                      height: height * 0.04,
+                    ),
+                    CustomAppBar(
+                      width: width,
+                      height: height * 0.1,
+                      text: "Summary screen",
+                    ),
+                    SizedBox(
+                      height: height * 0.3,
+                    ),
+                    CustomContainer(
+                      width: width,
+                      height: height,
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: const Text(
+                          "There is no data. Add new data on another screen.",
+                          style: TextStyle(fontSize: 18, color: Colors.black),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: height * 0.384,
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: widget.bottomNavigationBar,
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(
-                height: height * 0.04,
-              ),
-              CustomContainer(
-                width: width,
-                height: height,
-                child: StatisticPieChart(
-                  dataMap: dataMap,
+            )
+          : Container(
+              height: height,
+              width: width,
+              child: GradientBackGround(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(
+                      height: height * 0.04,
+                    ),
+                    CustomAppBar(
+                      width: width,
+                      height: height * 0.1,
+                      text: "Summary screen",
+                    ),
+                    SizedBox(
+                      height: height * 0.03,
+                    ),
+                    CustomContainer(
+                      width: width,
+                      height: height,
+                      child: DateElements(
+                        height: height,
+                        width: width,
+                        dataMap: dataMap,
+                      ),
+                    ),
+                    SizedBox(
+                      height: height * 0.04,
+                    ),
+                    CustomContainer(
+                      width: width,
+                      height: height,
+                      child: StatisticPieChart(
+                        dataMap: dataMap,
+                      ),
+                    ),
+                    SizedBox(
+                      height: height * 0.049,
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: widget.bottomNavigationBar,
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(
-                height: height * 0.049,
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: widget.bottomNavigationBar,
-              ),
-            ],
-          ),
-        ),
-      ),
+            ),
     );
   }
 
@@ -108,5 +149,13 @@ class _SummaryScreenState extends State<SummaryScreen> {
         this.dataMap = value;
       });
     });
+  }
+
+  bool isDataEmpty() {
+    double value = 0.0;
+    for (String key in this.dataMap.keys) {
+      value += this.dataMap[key];
+    }
+    return value == 0.0;
   }
 }
