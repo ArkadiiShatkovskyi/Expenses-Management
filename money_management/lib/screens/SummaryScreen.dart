@@ -135,9 +135,11 @@ class _SummaryScreenState extends State<SummaryScreen> {
 
   void getData() {
     _dbProvider.expensesByGroup().then((value) {
-      setState(() {
-        this.dataMap = value;
-      });
+      if (mounted) {
+        setState(() {
+          this.dataMap = value;
+        });
+      }
     });
   }
 
