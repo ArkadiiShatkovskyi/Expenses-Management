@@ -138,19 +138,6 @@ class _AddExpenseState extends State<AddExpense> {
     }
   }
 
-  void _showData() {
-    widget._dbProvider.expenses().then((list) {
-      for (Expense l in list) {
-        print("Category: " +
-            l.category +
-            ", Price: " +
-            l.price.toString() +
-            ", Date: " +
-            _date.toString());
-      }
-    });
-  }
-
   Future<void> _showMyDialog(String title, String message) async {
     return showDialog<void>(
       context: context,
