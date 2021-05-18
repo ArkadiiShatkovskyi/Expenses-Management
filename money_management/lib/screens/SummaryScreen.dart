@@ -15,7 +15,7 @@ class SummaryScreen extends StatefulWidget {
 
   SummaryScreen(this.bottomNavigationBar) {
     if (bottomNavigationBar == null) {
-      bottomNavigationBar = CustomBottomNavigationBar(selectedOption: false);
+      bottomNavigationBar = CustomBottomNavigationBar(selectedOption: 0);
     }
   }
 
@@ -130,7 +130,7 @@ class _SummaryScreenState extends State<SummaryScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: height * 0.049,
+                      height: height * 0.048,
                     ),
                     Align(
                       alignment: Alignment.bottomCenter,
