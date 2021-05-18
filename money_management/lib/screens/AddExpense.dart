@@ -84,7 +84,26 @@ class _AddExpenseState extends State<AddExpense> {
                 ],
               ),
               SizedBox(
-                height: height * 0.2,
+                height: height * 0.025,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: height * 0.06,
+                    width: width * 0.55,
+                    child: CustomButton(
+                      text: "Clear data",
+                      icon: Icons.delete_outline_outlined,
+                      onPressed: () {
+                        widget._dbProvider.clearDataBase();
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: height * 0.115,
               ),
               widget.bottomNavigationBar,
             ],
@@ -95,8 +114,6 @@ class _AddExpenseState extends State<AddExpense> {
   }
 
   void saveDate() {
-    widget._dbProvider.clearDataBase();
-    _showData();
     if (_tecPlace.value.text == "" || _tecPrice.value.text == "") {
       _showMyDialog(
           "Enter required fields", "Price, Category or Place was not filled!");
@@ -106,14 +123,14 @@ class _AddExpenseState extends State<AddExpense> {
       DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
       String date = dateFormat.format(_date);
       DateTime dateTime = dateFormat.parse(date);
-/**
+
       Expense expense = new Expense(
           category: category,
           place: _tecPlace.text,
           price: double.parse(_tecPrice.text),
           date: dateTime);
       widget._dbProvider.insertExpense(expense);
-**/
+
       _showMyDialog("Record was saved", "Record was saved to database.");
       _tecPlace.text = "";
       _tecPrice.text = "";
