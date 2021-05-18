@@ -40,16 +40,6 @@ class _SummaryScreenState extends State<SummaryScreen> {
     getData();
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-/**
-    Map<String, double> dataMap = {
-      "Food": 700,
-      "Electronic": 400,
-      "Food delivery": 60,
-      "Clothes": 150,
-      "Vape": 100,
-      "Other": 100,
-    };
-**/
     return Scaffold(
       body: isDataEmpty()
           ? Container(
