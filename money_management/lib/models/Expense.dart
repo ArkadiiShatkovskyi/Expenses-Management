@@ -15,6 +15,10 @@ class Expense {
     };
   }
 
+  String getDate(){
+    return date.toString().substring(0, 10);
+  }
+
   String toString() {
     return category +
         ", " +
