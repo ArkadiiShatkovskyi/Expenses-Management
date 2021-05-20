@@ -7,7 +7,7 @@ import '../widgets/GradientBackground.dart';
 import '../widgets/SummaryScreenBody.dart';
 
 // ignore: must_be_immutable
-class SummaryScreen extends StatefulWidget {
+class SummaryScreen extends StatelessWidget {
   Widget bottomNavigationBar;
 
   SummaryScreen(this.bottomNavigationBar) {
@@ -16,11 +16,6 @@ class SummaryScreen extends StatefulWidget {
     }
   }
 
-  @override
-  _SummaryScreenState createState() => _SummaryScreenState();
-}
-
-class _SummaryScreenState extends State<SummaryScreen> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -45,7 +40,7 @@ class _SummaryScreenState extends State<SummaryScreen> {
                 SummaryScreenBody(),
                 Align(
                   alignment: Alignment.bottomCenter,
-                  child: widget.bottomNavigationBar,
+                  child: bottomNavigationBar,
                 ),
               ]),
         ),
