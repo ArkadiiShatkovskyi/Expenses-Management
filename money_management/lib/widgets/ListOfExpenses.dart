@@ -57,7 +57,7 @@ class _ListOfExpenseState extends State<ListOfExpense> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(
-                      width: width * 0.4,
+                      width: width * 0.35,
                       child: Text(
                         listOfExpenses[index].category,
                         style: TextStyle(fontSize: 18),
@@ -67,7 +67,14 @@ class _ListOfExpenseState extends State<ListOfExpense> {
                       width: width * 0.3,
                       child: Text(
                         listOfExpenses[index].price
-                            .toString() + " PLN",
+                            .toString(),
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                    SizedBox(
+                      width: width * 0.065,
+                      child: const Text(
+                        "pln",
                         style: TextStyle(fontSize: 18),
                       ),
                     ),
