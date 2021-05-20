@@ -168,7 +168,7 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
   }
 
   void _chooseDate(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
+    DateTime picked = await showDatePicker(
       context: context,
       initialDate: widget.date, // Refer step 1
       firstDate: DateTime(2000),
