@@ -1,33 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:intl/intl.dart';
 
-import '../widgets/DropDownCategorySelect.dart';
-import '../widgets/CustomMessageBox.dart';
-import '../widgets/CustomButton.dart';
+import '../widgets/AddExpenseDynamicData.dart';
 import '../widgets/CustomAppBar.dart';
-import '../widgets/CustomContainer.dart';
 import '../widgets/GradientBackground.dart';
-import '../models/Expense.dart';
-import '../models/DBProvider.dart';
-import '../widgets/AddRecordFields.dart';
 
-class AddExpense extends StatefulWidget {
-  final DBProvider _dbProvider = DBProvider();
+class AddExpense extends StatelessWidget {
   final Widget bottomNavigationBar;
-  final DropDownCategorySelect categorySelect = DropDownCategorySelect();
 
   AddExpense(this.bottomNavigationBar);
-
-  @override
-  _AddExpenseState createState() => _AddExpenseState();
-}
-
-class _AddExpenseState extends State<AddExpense> {
-  DateTime _date = DateTime.now();
-
-  TextEditingController _tecPrice = new TextEditingController();
-  TextEditingController _tecPlace = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -54,100 +35,12 @@ class _AddExpenseState extends State<AddExpense> {
               SizedBox(
                 height: height * 0.05,
               ),
-              CustomContainer(
-                width: width,
-                height: height,
-                child: AddRecordFields(
-                  height: height,
-                  width: width,
-                  tecPlace: _tecPlace,
-                  tecPrice: _tecPrice,
-                  date: _date,
-                  dropDownMenu: widget.categorySelect,
-                ),
-              ),
-              SizedBox(
-                height: height * 0.06,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: height * 0.06,
-                    width: width * 0.55,
-                    child: CustomButton(
-                      text: "Add new record",
-                      icon: Icons.save_outlined,
-                      onPressed: saveDate,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: height * 0.025,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: height * 0.06,
-                    width: width * 0.55,
-                    child: CustomButton(
-                      text: "Clear data",
-                      icon: Icons.delete_outline_outlined,
-                      onPressed: () {
-                        widget._dbProvider.clearDataBase();
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: height * 0.115,
-              ),
-              widget.bottomNavigationBar,
+              AddExpenseDynamicData(),
+              bottomNavigationBar,
             ],
           ),
         ),
       ),
-    );
-  }
-
-  void saveDate() {
-    if (_tecPlace.value.text == "" || _tecPrice.value.text == "") {
-      _showMyDialog(
-          "Enter required fields", "Price, Category or Place was not filled!");
-    } else {
-      String category = widget.categorySelect.getValue();
-
-      DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
-      String date = dateFormat.format(_date);
-      DateTime dateTime = dateFormat.parse(date);
-
-      Expense expense = new Expense(
-          category: category,
-          place: _tecPlace.text,
-          price: double.parse(_tecPrice.text),
-          date: dateTime);
-      widget._dbProvider.insertExpense(expense);
-
-      _showMyDialog("Record was saved", "Record was saved to database.");
-      _tecPlace.text = "";
-      _tecPrice.text = "";
-      _date = DateTime.now();
-    }
-  }
-
-  Future<void> _showMyDialog(String title, String message) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return CustomMessageBox(
-          title: title,
-          message: message,
-        );
-      },
     );
   }
 }
