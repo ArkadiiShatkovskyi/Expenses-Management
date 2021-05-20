@@ -80,17 +80,6 @@ class _ListOfExpensesScreenState extends State<ListOfExpensesScreen> {
                                     style: TextStyle(fontSize: 18),
                                   ),
                                 ),
-                                /**
-                                Text(
-                                  widget.listOfExpenses[index].getDate(),
-                                  style: TextStyle(fontSize: 16),
-                                ),
-
-                                Text(
-                                  widget.listOfExpenses[index].place.toString(),
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                                    **/
                               ],
                             ),
                           );
