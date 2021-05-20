@@ -65,22 +65,32 @@ class _ListOfExpensesScreenState extends State<ListOfExpensesScreen> {
                             title: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Text(
-                                  widget.listOfExpenses[index].category,
-                                  style: TextStyle(fontSize: 18),
+                                SizedBox(
+                                  width: width * 0.4,
+                                  child: Text(
+                                    widget.listOfExpenses[index].category,
+                                    style: TextStyle(fontSize: 18),
+                                  ),
                                 ),
-                                Text(
-                                  widget.listOfExpenses[index].price.toString(),
-                                  style: TextStyle(fontSize: 18),
+                                SizedBox(
+                                  width: width * 0.3,
+                                  child: Text(
+                                    widget.listOfExpenses[index].price
+                                        .toString() + " PLN",
+                                    style: TextStyle(fontSize: 18),
+                                  ),
                                 ),
+                                /**
                                 Text(
                                   widget.listOfExpenses[index].getDate(),
                                   style: TextStyle(fontSize: 16),
                                 ),
+
                                 Text(
                                   widget.listOfExpenses[index].place.toString(),
                                   style: TextStyle(fontSize: 16),
                                 ),
+                                    **/
                               ],
                             ),
                           );
