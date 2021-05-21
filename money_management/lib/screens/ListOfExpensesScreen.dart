@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:money_menagment/widgets/ListOfExpenses.dart';
+import '../widgets/CustomAppBar.dart';
 
 import '../widgets/GradientBackground.dart';
 
@@ -21,7 +22,18 @@ class ListOfExpensesScreen extends StatelessWidget {
         width: width,
         height: height,
         child: GradientBackGround(
-          child: ListOfExpense(bottomNavigationBar),
+          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+            SizedBox(
+              height: height * 0.04,
+            ),
+            CustomAppBar(
+              width: width,
+              height: height * 0.1,
+              text: "List of expenses",
+            ),
+            ListOfExpense(),
+            bottomNavigationBar,
+          ]),
         ),
       ),
     );
