@@ -3,34 +3,35 @@ import 'package:intl/intl.dart';
 
 import '../models/DBProvider.dart';
 import '../widgets/CustomButton.dart';
-import '../widgets/CustomMessageBox.dart';
+import '../widgets/CustomMessageBoxWithOptions.dart';
 import '../models/Expense.dart';
 import '../widgets/DropDownCategorySelect.dart';
 
-// ignore: must_be_immutable
 class EditExpenseDynamicData extends StatefulWidget {
   final double height;
   final double width;
-  Expense expense;
+  final Expense expense;
   final DBProvider _dbProvider = DBProvider();
-  final TextEditingController _tecPrice = TextEditingController();
-  final TextEditingController _tecPlace = TextEditingController();
-  DropDownCategorySelect _categorySelect = DropDownCategorySelect();
-  DateTime _date = DateTime.now();
 
-  EditExpenseDynamicData({this.height, this.width, Expense expense});
+  EditExpenseDynamicData({this.height, this.width, this.expense});
 
   @override
   _EditExpenseDynamicDataState createState() => _EditExpenseDynamicDataState();
 }
 
 class _EditExpenseDynamicDataState extends State<EditExpenseDynamicData> {
+
+  TextEditingController _tecPrice = TextEditingController();
+  TextEditingController _tecPlace = TextEditingController();
+  DropDownCategorySelect _categorySelect = DropDownCategorySelect();
+  DateTime _date = DateTime.now();
+
   @override
   void initState() {
-    widget._tecPlace.text = widget.expense.place;
-    widget._tecPrice.text = widget.expense.price.toString();
-    widget._categorySelect.dropdownValue = widget.expense.category;
-    widget._date = widget.expense.date;
+    _tecPlace.text = widget.expense.place;
+    _tecPrice.text = widget.expense.price.toString();
+    _categorySelect.dropdownValue = widget.expense.category;
+    _date = widget.expense.date;
     super.initState();
   }
 
@@ -42,7 +43,7 @@ class _EditExpenseDynamicDataState extends State<EditExpenseDynamicData> {
           padding: EdgeInsets.only(
               top: widget.height * 0.02, bottom: widget.width * 0.05),
           child: const Text(
-            'Edit data',
+            'Update values bellow',
             style: TextStyle(fontSize: 22, color: Colors.black),
           ),
         ),
@@ -68,7 +69,7 @@ class _EditExpenseDynamicDataState extends State<EditExpenseDynamicData> {
                 alignment: Alignment.centerLeft,
                 child: TextFormField(
                   style: TextStyle(color: Colors.black),
-                  controller: widget._tecPrice,
+                  controller: _tecPrice,
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
                   decoration: const InputDecoration(
                     hintText: 'Enter a price',
@@ -103,7 +104,7 @@ class _EditExpenseDynamicDataState extends State<EditExpenseDynamicData> {
             Container(
               width: widget.width * 0.4,
               height: widget.height * 0.07,
-              child: widget._categorySelect,
+              child: _categorySelect,
             ),
           ],
         ),
@@ -129,7 +130,7 @@ class _EditExpenseDynamicDataState extends State<EditExpenseDynamicData> {
                 alignment: Alignment.centerLeft,
                 child: TextFormField(
                   style: TextStyle(color: Colors.black),
-                  controller: widget._tecPlace,
+                  controller: _tecPlace,
                   decoration: const InputDecoration(
                     hintText: 'Enter a place',
                     hintStyle: TextStyle(color: Colors.black, fontSize: 18),
@@ -169,7 +170,7 @@ class _EditExpenseDynamicDataState extends State<EditExpenseDynamicData> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    widget._date.toString().substring(0, 10),
+                    _date.toString().substring(0, 10),
                     style: TextStyle(color: Colors.black, fontSize: 18),
                   ),
                 ),
@@ -199,43 +200,41 @@ class _EditExpenseDynamicDataState extends State<EditExpenseDynamicData> {
   }
 
   void _updateData() {
-    if (widget._tecPlace.value.text == "" ||
-        widget._tecPrice.value.text == "") {
+    if (_tecPlace.value.text == "" ||
+        _tecPrice.value.text == "") {
       _showMyDialog(
           "Enter required fields", "Price, Category or Place was not filled!");
     } else {
-      String category = widget._categorySelect.getValue();
+      String category = _categorySelect.getValue();
 
       DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
-      String date = dateFormat.format(widget._date);
+      String date = dateFormat.format(_date);
       DateTime dateTime = dateFormat.parse(date);
 
       Expense expense = new Expense(
           category: category,
-          place: widget._tecPlace.text,
-          price: double.parse(widget._tecPrice.text),
+          place: _tecPlace.text,
+          price: double.parse(_tecPrice.text),
           date: dateTime);
-      widget._dbProvider.insertExpense(expense);
 
-      _showMyDialog("Record was saved", "Record was saved to database.");
-      widget._tecPlace.text = "";
-      widget._tecPrice.text = "";
-      widget._date = DateTime.now();
+      widget._dbProvider.updateExpense(widget.expense, expense);
+
+      _showMyDialog("Record was updated", "Record was updated with new values.");
     }
   }
 
   void _chooseDate(BuildContext context) async {
     DateTime picked = await showDatePicker(
       context: context,
-      initialDate: widget._date, // Refer step 1
+      initialDate: _date, // Refer step 1
       firstDate: DateTime(2000),
       lastDate: DateTime(2025),
     );
-    if (picked != null && picked != widget._date)
+    if (picked != null && picked != _date)
       setState(() {
-        widget._date = picked;
+        _date = picked;
         DateTime dtNow = DateTime.now();
-        widget._date = widget._date.add(Duration(
+        _date = _date.add(Duration(
             hours: dtNow.hour,
             minutes: dtNow.minute,
             seconds: dtNow.second,
@@ -248,7 +247,7 @@ class _EditExpenseDynamicDataState extends State<EditExpenseDynamicData> {
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
-        return CustomMessageBox(
+        return CustomMessageBoxWithOptions(
           title: title,
           message: message,
         );
