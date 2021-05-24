@@ -5,24 +5,24 @@ import 'package:sqflite/sqflite.dart';
 
 import '../models/Expense.dart';
 
-class DBProvider{
-
+class DBProvider {
   static String _dbName = "expenses";
   Future<Database> database;
 
-  DBProvider(){
+  DBProvider() {
     _getInstance();
   }
 
-  Future<Database> _getInstance(){
-    if(database == null){
+  Future<Database> _getInstance() {
+    if (database == null) {
       database = _database();
     }
     return database;
   }
 
   Future<Database> _database() async {
-    return openDatabase(join(await getDatabasesPath(), _dbName),
+    return openDatabase(
+      join(await getDatabasesPath(), _dbName),
       onCreate: (db, version) {
         return db.execute(
           "CREATE TABLE expenses(date TEXT PRIMARY KEY, category TEXT, place TEXT, price REAL)",
@@ -48,7 +48,6 @@ class DBProvider{
   }
 
   Future<Map<String, double>> expensesByGroup() async {
-
     Map<String, double> dataMap = {
       "Food": 0.0,
       "Electronic": 0.0,
@@ -62,8 +61,11 @@ class DBProvider{
 
     //print("LIST: " + listOfElements.toString());
 
-    for(Expense e in listOfElements){
-      dataMap.forEach((key, value) { if(key == e.category) dataMap.update(key, (dynamic val) => val + e.price);});
+    for (Expense e in listOfElements) {
+      dataMap.forEach((key, value) {
+        if (key == e.category)
+          dataMap.update(key, (dynamic val) => val + e.price);
+      });
     }
 
     return dataMap;
@@ -95,6 +97,32 @@ class DBProvider{
       expense.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+  }
+
+  Future<void> updateExpense(Expense expense, Expense expenseWithNewValues) async {
+    final Database db = await database;
+
+    db.update(
+      _dbName,
+      expenseWithNewValues.toMap(),
+      where: 'date = ? AND price = ? AND place = ?',
+      whereArgs: [expense.date.toString(), expense.price.toString(), expense.place],
+    );
+  }
+
+  Future<void> showExpense() async {
+    final Database db = await database;
+
+    final List<Map<String, dynamic>> maps = await db.query(_dbName);
+    List<Expense> m = List.generate(maps.length, (i) {
+      return Expense(
+        category: maps[i]['category'],
+        place: maps[i]['place'],
+        price: maps[i]['price'],
+        date: DateTime.parse(maps[i]['date']),
+      );
+    });
+    print(m.toString());
   }
 
   void closeDBConnection() async {
