@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../screens/AddExpense.dart';
+import '../screens/AddExpenseScreen.dart';
 import '../screens/SummaryScreen.dart';
 import '../screens/ListOfExpensesScreen.dart';
 
 // ignore: must_be_immutable
 class CustomBottomNavigationBar extends StatefulWidget {
-  //bool selectedOption;
   int selectedOption;
   CustomBottomNavigationBar({this.selectedOption});
 
