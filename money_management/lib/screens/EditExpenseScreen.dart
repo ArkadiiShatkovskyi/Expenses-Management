@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:money_menagment/models/Expense.dart';
-import 'package:money_menagment/widgets/EditExpenseDynamicData.dart';
 
+import '../models/Expense.dart';
+import '../widgets/CustomBottomNavigationBar.dart';
+import '../widgets/EditExpenseDynamicData.dart';
 import '../widgets/CustomAppBar.dart';
 import '../widgets/GradientBackground.dart';
 
 // ignore: must_be_immutable
 class EditExpenseScreen extends StatelessWidget {
-  final Widget bottomNavigationBar;
   Expense expense;
 
-  EditExpenseScreen(this.bottomNavigationBar, this.expense);
+  EditExpenseScreen(this.expense);
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +29,14 @@ class EditExpenseScreen extends StatelessWidget {
             CustomAppBar(
               width: width,
               height: height * 0.1,
-              text: "List of expenses",
+              text: "Edit record",
             ),
             EditExpenseDynamicData(
                 height: height, width: width, expense: expense),
-            bottomNavigationBar,
+            SizedBox(
+              height: height * 0.31,
+            ),
+            CustomBottomNavigationBar(selectedOption: 2),
           ]),
         ),
       ),
