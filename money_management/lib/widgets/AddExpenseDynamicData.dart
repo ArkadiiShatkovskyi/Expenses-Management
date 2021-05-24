@@ -57,7 +57,7 @@ class _AddExpenseDynamicDataState extends State<AddExpenseDynamicData>{
                 child: CustomButton(
                   text: "Add new record",
                   icon: Icons.save_outlined,
-                  onPressed: saveDate,
+                  onPressed: _saveDate,
                 ),
               ),
             ],
@@ -91,7 +91,7 @@ class _AddExpenseDynamicDataState extends State<AddExpenseDynamicData>{
   }
 
 
-  void saveDate() {
+  void _saveDate() {
     //_dbProvider.showExpense();
     if (_tecPlace.value.text == "" || _tecPrice.value.text == "") {
       _showMyDialog(
