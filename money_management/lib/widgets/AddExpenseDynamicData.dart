@@ -76,6 +76,7 @@ class _AddExpenseDynamicDataState extends State<AddExpenseDynamicData>{
                   icon: Icons.delete_outline_outlined,
                   onPressed: () {
                     _dbProvider.clearDataBase();
+                    _showMyDialog("Database was deleted", "All data from database was deleted.");
                   },
                 ),
               ),
@@ -89,7 +90,9 @@ class _AddExpenseDynamicDataState extends State<AddExpenseDynamicData>{
     );
   }
 
+
   void saveDate() {
+    //_dbProvider.showExpense();
     if (_tecPlace.value.text == "" || _tecPrice.value.text == "") {
       _showMyDialog(
           "Enter required fields", "Price, Category or Place was not filled!");
@@ -112,6 +115,16 @@ class _AddExpenseDynamicDataState extends State<AddExpenseDynamicData>{
       _tecPrice.text = "";
       _date = DateTime.now();
     }
+    /**
+    DateTime d = DateTime(2021,05,21,20,57,31);
+    Expense expense = new Expense(
+        category: "Food",
+        place: "Wroclaw",
+        price: 171.0,
+        date: d);
+    Expense expense2 = Expense(category: "Food", place: "Wroclaw", date: d, price: 34.0);
+    _dbProvider.updateExpense(expense, expense2);
+    **/
   }
 
   Future<void> _showMyDialog(String title, String message) async {
