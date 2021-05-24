@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:money_menagment/screens/EditExpenseScreen.dart';
+import 'package:money_menagment/widgets/CustomButton.dart';
 
 import '../models/Expense.dart';
 import '../models/DBProvider.dart';
@@ -46,7 +48,7 @@ class _ListOfExpenseState extends State<ListOfExpense> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             SizedBox(
-                              width: width * 0.35,
+                              width: width * 0.3,
                               child: Text(
                                 listOfExpenses[index].category,
                                 style: TextStyle(fontSize: 18),
@@ -55,15 +57,32 @@ class _ListOfExpenseState extends State<ListOfExpense> {
                             SizedBox(
                               width: width * 0.3,
                               child: Text(
-                                listOfExpenses[index].price.toString(),
+                                listOfExpenses[index].price.toString() + " pln",
                                 style: TextStyle(fontSize: 18),
                               ),
                             ),
                             SizedBox(
-                              width: width * 0.065,
-                              child: const Text(
-                                "pln",
-                                style: TextStyle(fontSize: 18),
+                              width: width * 0.12,
+                              child: CircleAvatar(
+                                radius: 18,
+                                backgroundColor:
+                                    Colors.indigoAccent.withAlpha(200),
+                                child: IconButton(
+                                    icon: Icon(
+                                      Icons.edit,
+                                      color: Colors.white,
+                                      size: 18,
+                                    ),
+                                    onPressed: () => {
+                                          Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  EditExpenseScreen(
+                                                      listOfExpenses[index]),
+                                            ),
+                                          ),
+                                        }),
                               ),
                             ),
                           ],
