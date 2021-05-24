@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:money_menagment/screens/EditExpenseScreen.dart';
-import 'package:money_menagment/widgets/CustomButton.dart';
 
 import '../models/Expense.dart';
 import '../models/DBProvider.dart';
