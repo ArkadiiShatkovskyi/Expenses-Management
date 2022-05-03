@@ -23,6 +23,7 @@ class SummaryScreen extends StatelessWidget {
 
     return Scaffold(
       body: Container(
+
         height: height,
         width: width,
         child: GradientBackGround(
@@ -38,6 +39,9 @@ class SummaryScreen extends StatelessWidget {
                   text: "Summary screen",
                 ),
                 SummaryScreenBody(),
+                SizedBox(
+                  height: height * 0.0059,
+                ),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: bottomNavigationBar,
