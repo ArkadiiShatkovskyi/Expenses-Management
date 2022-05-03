@@ -15,7 +15,9 @@ class StatisticPieChart extends StatelessWidget {
     return SizedBox(
       width: width * 0.9,
       height: height * 0.3,
-      child: PieChart(dataMap: dataMap),
+      child: PieChart(
+        dataMap: dataMap,
+      ),
     );
   }
 }
