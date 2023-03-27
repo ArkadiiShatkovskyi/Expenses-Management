@@ -42,9 +42,9 @@ class _SummaryScreenBodyState extends State<SummaryScreenBody> {
                 height: height,
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
-                  child: const Text(
+                  child: Text(
                     "There is no data. Add new data on another screen.",
-                    style: TextStyle(fontSize: 18, color: Colors.black),
+                    style: Theme.of(context).primaryTextTheme.displaySmall,
                   ),
                 ),
               ),

@@ -16,7 +16,7 @@ class CustomMessageBox extends StatelessWidget {
       title: Center(
         child: Text(
           this.title,
-          style: TextStyle(fontSize: 22, color: Colors.black),
+          style: Theme.of(context).primaryTextTheme.displaySmall,
         ),
       ),
       content: SingleChildScrollView(
@@ -25,7 +25,7 @@ class CustomMessageBox extends StatelessWidget {
             Center(
               child: Text(
                 this.message,
-                style: TextStyle(fontSize: 17, color: Colors.black),
+                style: Theme.of(context).primaryTextTheme.displaySmall,
               ),
             ),
           ],
@@ -35,7 +35,7 @@ class CustomMessageBox extends StatelessWidget {
         TextButton(
           child: Text(
             'Ok',
-            style: TextStyle(fontSize: 20, color: Colors.indigoAccent),
+            style: Theme.of(context).primaryTextTheme.displayMedium,
           ),
           onPressed: () {
             Navigator.of(context).pop();

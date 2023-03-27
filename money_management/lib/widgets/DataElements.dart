@@ -14,9 +14,9 @@ class DateElements extends StatelessWidget {
       children: [
         Container(
           padding: EdgeInsets.only(bottom: width * 0.05),
-          child: const Text(
+          child: Text(
             'Statistic',
-            style: TextStyle(fontSize: 20, color: Colors.black),
+            style: Theme.of(context).primaryTextTheme.displayMedium,
           ),
         ),
         for (String item in dataMap.keys) getStatisticElement(item),

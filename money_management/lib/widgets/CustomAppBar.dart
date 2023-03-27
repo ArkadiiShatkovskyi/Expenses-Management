@@ -15,10 +15,7 @@ class CustomAppBar extends StatelessWidget {
       child: Center(
         child: Text(
           this.text,
-          style: TextStyle(
-            color: Colors.black.withAlpha(175),
-            fontSize: 25,
-          ),
+          style: Theme.of(context).primaryTextTheme.displayLarge,
         ),
       ),
     );

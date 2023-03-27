@@ -13,34 +13,31 @@ class StatisticElement extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    Color colorElements = Colors.black;
-
     return Container(
       child: Column(
         children: [
           SizedBox(
               width: width * 0.7,
               child: Divider(
-                height: height * 0.02,
-                color: colorElements,
+                height: height * 0.01,
               )),
           Padding(
-            padding: EdgeInsets.only(left: width * 0.25),
+            padding: EdgeInsets.only(left: width * 0.2),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SizedBox(
                   width: width * 0.3,
                   child: Text(
                     elementLabel,
-                    style: TextStyle(fontSize: 16, color: colorElements),
+                    style: Theme.of(context).primaryTextTheme.displaySmall,
                   ),
                 ),
                 SizedBox(
                   width: width * 0.3,
                   child: Text(
                     elementValue.toString(),
-                    style: TextStyle(fontSize: 16, color: colorElements),
+                    style: Theme.of(context).primaryTextTheme.displaySmall,
                   ),
                 ),
               ],

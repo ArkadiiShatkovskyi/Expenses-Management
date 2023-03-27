@@ -19,7 +19,7 @@ class CustomMessageBoxWithOptions extends StatelessWidget {
       title: Center(
         child: Text(
           this.title,
-          style: TextStyle(fontSize: 22, color: Colors.black),
+          style: Theme.of(context).primaryTextTheme.displayMedium,
         ),
       ),
       content: SingleChildScrollView(
@@ -28,7 +28,7 @@ class CustomMessageBoxWithOptions extends StatelessWidget {
             Center(
               child: Text(
                 this.message,
-                style: TextStyle(fontSize: 17, color: Colors.black),
+                style: Theme.of(context).primaryTextTheme.displaySmall,
               ),
             ),
           ],
@@ -38,7 +38,7 @@ class CustomMessageBoxWithOptions extends StatelessWidget {
         TextButton(
           child: Text(
             'Ok',
-            style: TextStyle(fontSize: 20, color: Colors.indigoAccent),
+            style: Theme.of(context).primaryTextTheme.displayMedium,
           ),
           onPressed: () {
             Navigator.of(context).pop();
@@ -47,7 +47,7 @@ class CustomMessageBoxWithOptions extends StatelessWidget {
         TextButton(
           child: Text(
             'Go back',
-            style: TextStyle(fontSize: 20, color: Colors.indigoAccent),
+            style: Theme.of(context).primaryTextTheme.displayMedium,
           ),
           onPressed: () {
             Navigator.pushReplacement(

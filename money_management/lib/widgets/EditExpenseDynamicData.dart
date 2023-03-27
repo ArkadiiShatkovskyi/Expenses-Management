@@ -71,9 +71,9 @@ class _EditExpenseDynamicDataState extends State<EditExpenseDynamicData> {
                   style: TextStyle(color: Colors.black),
                   controller: _tecPrice,
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     hintText: 'Enter a price',
-                    hintStyle: TextStyle(color: Colors.black, fontSize: 18),
+                    hintStyle: Theme.of(context).primaryTextTheme.displaySmall,
                   ),
                   validator: (value) {
                     if (value.isEmpty) {
@@ -95,9 +95,9 @@ class _EditExpenseDynamicDataState extends State<EditExpenseDynamicData> {
               padding: const EdgeInsets.only(right: 20),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: const Text(
+                child: Text(
                   "Category",
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  style: Theme.of(context).primaryTextTheme.displaySmall,
                 ),
               ),
             ),
@@ -117,9 +117,9 @@ class _EditExpenseDynamicDataState extends State<EditExpenseDynamicData> {
               padding: const EdgeInsets.only(right: 20),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: const Text(
+                child: Text(
                   "Place",
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  style: Theme.of(context).primaryTextTheme.displaySmall,
                 ),
               ),
             ),
@@ -131,9 +131,9 @@ class _EditExpenseDynamicDataState extends State<EditExpenseDynamicData> {
                 child: TextFormField(
                   style: TextStyle(color: Colors.black),
                   controller: _tecPlace,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     hintText: 'Enter a place',
-                    hintStyle: TextStyle(color: Colors.black, fontSize: 18),
+                    hintStyle: Theme.of(context).primaryTextTheme.displaySmall,
                   ),
                   validator: (value) {
                     if (value.isEmpty) {
@@ -155,9 +155,9 @@ class _EditExpenseDynamicDataState extends State<EditExpenseDynamicData> {
               padding: const EdgeInsets.only(right: 20),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: const Text(
+                child: Text(
                   "Date",
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  style: Theme.of(context).primaryTextTheme.displaySmall,
                 ),
               ),
             ),
@@ -171,7 +171,7 @@ class _EditExpenseDynamicDataState extends State<EditExpenseDynamicData> {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     _date.toString().substring(0, 10),
-                    style: TextStyle(color: Colors.black, fontSize: 18),
+                    style: Theme.of(context).primaryTextTheme.displaySmall,
                   ),
                 ),
               ),

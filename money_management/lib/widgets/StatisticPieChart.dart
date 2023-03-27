@@ -17,6 +17,9 @@ class StatisticPieChart extends StatelessWidget {
       height: height * 0.3,
       child: PieChart(
         dataMap: dataMap,
+        legendOptions: LegendOptions(
+          legendTextStyle: Theme.of(context).primaryTextTheme.displaySmall,
+        ),
       ),
     );
   }

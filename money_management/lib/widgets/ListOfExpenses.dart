@@ -50,14 +50,14 @@ class _ListOfExpenseState extends State<ListOfExpense> {
                               width: width * 0.3,
                               child: Text(
                                 listOfExpenses[index].category,
-                                style: TextStyle(fontSize: 18),
+                                style: Theme.of(context).primaryTextTheme.displaySmall,
                               ),
                             ),
                             SizedBox(
                               width: width * 0.3,
                               child: Text(
                                 listOfExpenses[index].price.toString() + " pln",
-                                style: TextStyle(fontSize: 18),
+                                style: Theme.of(context).primaryTextTheme.displaySmall,
                               ),
                             ),
                             SizedBox(
@@ -109,9 +109,9 @@ class _ListOfExpenseState extends State<ListOfExpense> {
                   height: height,
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: const Text(
+                    child: Text(
                       "There is no data. Add new data on another screen.",
-                      style: TextStyle(fontSize: 18, color: Colors.black),
+                      style: Theme.of(context).primaryTextTheme.displaySmall,
                     ),
                   ),
                 ),

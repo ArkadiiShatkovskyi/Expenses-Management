@@ -31,10 +31,7 @@ class CustomButton extends StatelessWidget {
       ),
       label: Text(
         this.text,
-        style: TextStyle(
-          color: Colors.white.withAlpha(220),
-          fontSize: 17,
-        ),
+        style: Theme.of(context).primaryTextTheme.displaySmall,
       ),
     );
   }
