@@ -17,6 +17,23 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        primaryTextTheme: TextTheme(
+          displayMedium: TextStyle(
+            color: Colors.black,
+            fontSize: 45,
+            fontFamily: 'rm-almanack',
+          ),
+          displayLarge: TextStyle(
+            color: Colors.black,
+            fontSize: 60,
+            fontFamily: 'rm-almanack',
+          ),
+          displaySmall: TextStyle(
+            color: Colors.black,
+            fontSize: 30,
+            fontFamily: 'rm-almanack',
+          ),
+        ),
       ),
       home: MyHomePage(),
     );
