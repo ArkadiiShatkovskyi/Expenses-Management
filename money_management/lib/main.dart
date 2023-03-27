@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           ),
           displaySmall: TextStyle(
             color: Colors.black,
-            fontSize: 30,
+            fontSize: 37,
             fontFamily: 'rm-almanack',
           ),
         ),
