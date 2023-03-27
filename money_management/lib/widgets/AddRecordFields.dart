@@ -17,6 +17,10 @@ class AddRecordFields extends StatefulWidget {
 }
 
 class _AddRecordFieldsState extends State<AddRecordFields> {
+  final Color color = Colors.black;
+  final String fontFamily = 'SunnySpellsBasicRegular';
+  final double fontSize = 25;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,9 +28,9 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
         Container(
           padding: EdgeInsets.only(
               top: widget.height * 0.02, bottom: widget.width * 0.05),
-          child: const Text(
+          child: Text(
             'Add new record',
-            style: TextStyle(fontSize: 22, color: Colors.black),
+            style: TextStyle(fontSize: 30, color: color, fontFamily: fontFamily),
           ),
         ),
         Row(
@@ -38,9 +42,9 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
               padding: const EdgeInsets.only(right: 20),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: const Text(
+                child: Text(
                   "Price",
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  style: TextStyle(color: color, fontSize: fontSize, fontFamily: fontFamily),
                 ),
               ),
             ),
@@ -50,12 +54,12 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: TextFormField(
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: color),
                   controller: widget.tecPrice,
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     hintText: 'Enter a price',
-                    hintStyle: TextStyle(color: Colors.black, fontSize: 18),
+                    hintStyle: TextStyle(color: color, fontSize: fontSize, fontFamily: fontFamily),
                   ),
                   validator: (value) {
                     if (value.isEmpty) {
@@ -77,9 +81,9 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
               padding: const EdgeInsets.only(right: 20),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: const Text(
+                child: Text(
                   "Category",
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  style: TextStyle(color: color, fontSize: fontSize, fontFamily: fontFamily),
                 ),
               ),
             ),
@@ -99,9 +103,9 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
               padding: const EdgeInsets.only(right: 20),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: const Text(
+                child: Text(
                   "Place",
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  style: TextStyle(color: color, fontSize: fontSize, fontFamily: fontFamily),
                 ),
               ),
             ),
@@ -111,11 +115,11 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: TextFormField(
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: color),
                   controller: widget.tecPlace,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     hintText: 'Enter a place',
-                    hintStyle: TextStyle(color: Colors.black, fontSize: 18),
+                    hintStyle: TextStyle(color: color, fontSize: fontSize, fontFamily: fontFamily),
                   ),
                   validator: (value) {
                     if (value.isEmpty) {
@@ -137,9 +141,9 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
               padding: const EdgeInsets.only(right: 20),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: const Text(
+                child: Text(
                   "Date",
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  style: TextStyle(color: color, fontSize: fontSize, fontFamily: fontFamily),
                 ),
               ),
             ),
@@ -153,7 +157,7 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     widget.date.toString().substring(0, 10),
-                    style: TextStyle(color: Colors.black, fontSize: 18),
+                    style: TextStyle(color: color, fontSize: fontSize, fontFamily: fontFamily),
                   ),
                 ),
               ),
