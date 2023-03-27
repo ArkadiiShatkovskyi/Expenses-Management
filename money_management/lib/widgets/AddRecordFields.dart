@@ -17,9 +17,6 @@ class AddRecordFields extends StatefulWidget {
 }
 
 class _AddRecordFieldsState extends State<AddRecordFields> {
-  final Color color = Colors.black;
-  final String fontFamily = 'SunnySpellsBasicRegular';
-  final double fontSize = 25;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +27,7 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
               top: widget.height * 0.02, bottom: widget.width * 0.05),
           child: Text(
             'Add new record',
-            style: TextStyle(fontSize: 30, color: color, fontFamily: fontFamily),
+            style: Theme.of(context).primaryTextTheme.displayLarge,
           ),
         ),
         Row(
@@ -44,7 +41,7 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "Price",
-                  style: TextStyle(color: color, fontSize: fontSize, fontFamily: fontFamily),
+                  style: Theme.of(context).primaryTextTheme.displayMedium,
                 ),
               ),
             ),
@@ -54,12 +51,12 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: TextFormField(
-                  style: TextStyle(color: color),
+                  style: Theme.of(context).primaryTextTheme.displayMedium,
                   controller: widget.tecPrice,
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
                   decoration: InputDecoration(
                     hintText: 'Enter a price',
-                    hintStyle: TextStyle(color: color, fontSize: fontSize, fontFamily: fontFamily),
+                    hintStyle: Theme.of(context).primaryTextTheme.displayMedium,
                   ),
                   validator: (value) {
                     if (value.isEmpty) {
@@ -83,7 +80,7 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "Category",
-                  style: TextStyle(color: color, fontSize: fontSize, fontFamily: fontFamily),
+                  style: Theme.of(context).primaryTextTheme.displayMedium,
                 ),
               ),
             ),
@@ -105,7 +102,7 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "Place",
-                  style: TextStyle(color: color, fontSize: fontSize, fontFamily: fontFamily),
+                  style: Theme.of(context).primaryTextTheme.displayMedium,
                 ),
               ),
             ),
@@ -115,11 +112,11 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: TextFormField(
-                  style: TextStyle(color: color),
+                  style: Theme.of(context).primaryTextTheme.displayMedium,
                   controller: widget.tecPlace,
                   decoration: InputDecoration(
                     hintText: 'Enter a place',
-                    hintStyle: TextStyle(color: color, fontSize: fontSize, fontFamily: fontFamily),
+                    hintStyle: Theme.of(context).primaryTextTheme.displayMedium,
                   ),
                   validator: (value) {
                     if (value.isEmpty) {
@@ -143,7 +140,7 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "Date",
-                  style: TextStyle(color: color, fontSize: fontSize, fontFamily: fontFamily),
+                  style: Theme.of(context).primaryTextTheme.displayMedium,
                 ),
               ),
             ),
@@ -157,7 +154,7 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     widget.date.toString().substring(0, 10),
-                    style: TextStyle(color: color, fontSize: fontSize, fontFamily: fontFamily),
+                    style: Theme.of(context).primaryTextTheme.displayMedium,
                   ),
                 ),
               ),
