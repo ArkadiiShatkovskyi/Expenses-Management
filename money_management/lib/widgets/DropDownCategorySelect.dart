@@ -21,7 +21,7 @@ class _DropDownCategorySelectState extends State<DropDownCategorySelect> {
       icon: const Icon(Icons.arrow_downward),
       iconSize: 24,
       elevation: 16,
-      style: const TextStyle(color: Colors.black, fontSize: 18,),
+      style: Theme.of(context).primaryTextTheme.displayMedium,
       underline: Container(
         height: 2,
         color: Colors.black.withAlpha(75),
