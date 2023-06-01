@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import './screens/SummaryScreen.dart';
+//import './screens/SummaryScreen.dart';
+import './screens/newDesign/SummaryScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -46,7 +47,8 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          child: SummaryScreen(null),
+          //child: SummaryScreen(null),
+          child: SummaryScreen(),
         ),
       ),
     );
