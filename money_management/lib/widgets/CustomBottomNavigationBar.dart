@@ -8,7 +8,7 @@ import '../screens/ListOfExpensesScreen.dart';
 // ignore: must_be_immutable
 class CustomBottomNavigationBar extends StatefulWidget {
   int selectedOption;
-  CustomBottomNavigationBar({this.selectedOption});
+  CustomBottomNavigationBar({required this.selectedOption});
 
   @override
   _CustomBottomNavigationBarState createState() =>

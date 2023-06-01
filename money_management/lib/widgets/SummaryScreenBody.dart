@@ -97,7 +97,7 @@ class _SummaryScreenBodyState extends State<SummaryScreenBody> {
   bool isDataEmpty() {
     double value = 0.0;
     for (String key in this.dataMap.keys) {
-      value += this.dataMap[key];
+      value += this.dataMap[key]!;
     }
     return value == 0.0;
   }

@@ -10,7 +10,7 @@ class AddRecordFields extends StatefulWidget {
   DateTime date;
 
   AddRecordFields(
-      {this.height, this.width, this.tecPrice, this.tecPlace, this.date, this.dropDownMenu});
+      {required this.height, required this.width, required this.tecPrice, required this.tecPlace, required this.date, required this.dropDownMenu});
 
   @override
   _AddRecordFieldsState createState() => _AddRecordFieldsState();
@@ -59,7 +59,7 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
                     hintStyle: Theme.of(context).primaryTextTheme.displayMedium,
                   ),
                   validator: (value) {
-                    if (value.isEmpty) {
+                    if (value!.isEmpty) {
                       return 'Please enter a price';
                     }
                     return null;
@@ -119,7 +119,7 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
                     hintStyle: Theme.of(context).primaryTextTheme.displayMedium,
                   ),
                   validator: (value) {
-                    if (value.isEmpty) {
+                    if (value!.isEmpty) {
                       return 'Enter a place';
                     }
                     return null;
@@ -169,7 +169,7 @@ class _AddRecordFieldsState extends State<AddRecordFields> {
   }
 
   void _chooseDate(BuildContext context) async {
-    DateTime picked = await showDatePicker(
+    DateTime? picked = await showDatePicker(
       context: context,
       initialDate: widget.date, // Refer step 1
       firstDate: DateTime(2000),

@@ -13,7 +13,7 @@ class EditExpenseDynamicData extends StatefulWidget {
   final Expense expense;
   final DBProvider _dbProvider = DBProvider();
 
-  EditExpenseDynamicData({this.height, this.width, this.expense});
+  EditExpenseDynamicData({required this.height, required this.width, required this.expense});
 
   @override
   _EditExpenseDynamicDataState createState() => _EditExpenseDynamicDataState();
@@ -76,7 +76,7 @@ class _EditExpenseDynamicDataState extends State<EditExpenseDynamicData> {
                     hintStyle: Theme.of(context).primaryTextTheme.displaySmall,
                   ),
                   validator: (value) {
-                    if (value.isEmpty) {
+                    if (value!.isEmpty) {
                       return 'Please enter a price';
                     }
                     return null;
@@ -136,7 +136,7 @@ class _EditExpenseDynamicDataState extends State<EditExpenseDynamicData> {
                     hintStyle: Theme.of(context).primaryTextTheme.displaySmall,
                   ),
                   validator: (value) {
-                    if (value.isEmpty) {
+                    if (value!.isEmpty) {
                       return 'Enter a place';
                     }
                     return null;
@@ -224,7 +224,7 @@ class _EditExpenseDynamicDataState extends State<EditExpenseDynamicData> {
   }
 
   void _chooseDate(BuildContext context) async {
-    DateTime picked = await showDatePicker(
+    DateTime? picked = await showDatePicker(
       context: context,
       initialDate: _date, // Refer step 1
       firstDate: DateTime(2000),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class GradientBackGround extends StatelessWidget {
   final Widget child;
 
-  GradientBackGround({this.child});
+  GradientBackGround({ required this.child});
 
   @override
   Widget build(BuildContext context) {

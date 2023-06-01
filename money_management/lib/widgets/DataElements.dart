@@ -6,7 +6,7 @@ class DateElements extends StatelessWidget {
   final double width;
   final Map<String, double> dataMap;
 
-  DateElements({this.height, this.width, this.dataMap});
+  DateElements({ required this.height, required this.width, required this.dataMap});
 
   @override
   Widget build(BuildContext context) {

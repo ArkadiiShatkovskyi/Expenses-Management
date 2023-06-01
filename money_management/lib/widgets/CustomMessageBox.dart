@@ -4,7 +4,7 @@ class CustomMessageBox extends StatelessWidget {
   final String title;
   final String message;
 
-  CustomMessageBox({this.title, this.message});
+  CustomMessageBox({ required this.title, required this.message});
 
   @override
   Widget build(BuildContext context) {

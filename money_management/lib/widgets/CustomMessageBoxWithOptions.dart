@@ -7,7 +7,7 @@ class CustomMessageBoxWithOptions extends StatelessWidget {
   final String title;
   final String message;
 
-  CustomMessageBoxWithOptions({this.title, this.message});
+  CustomMessageBoxWithOptions({ required this.title, required this.message});
 
   @override
   Widget build(BuildContext context) {

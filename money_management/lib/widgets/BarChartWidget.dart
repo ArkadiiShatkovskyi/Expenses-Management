@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 
 class BarChartWidget extends StatefulWidget {
-  const BarChartWidget({Key key, @required this.points}) : super(key: key);
+  const BarChartWidget({Key? key, required this.points}) : super(key: key);
 
   final Map points;
 
@@ -15,7 +15,7 @@ class BarChartWidget extends StatefulWidget {
 class _BarChartWidgetState extends State<BarChartWidget> {
   final Map points;
 
-  _BarChartWidgetState({@required this.points});
+  _BarChartWidgetState({required this.points});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
 
   List<BarChartGroupData> _chartGroups() {
 
-    List res = [];
+    List<BarChartGroupData> res = [];
     points.forEach((key, value) {
         res.add(BarChartGroupData(
             x: key.toInt(),

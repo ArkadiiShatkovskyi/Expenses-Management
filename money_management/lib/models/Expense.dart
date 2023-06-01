@@ -4,7 +4,7 @@ class Expense {
   final String place;
   final DateTime date;
 
-  Expense({this.category, this.place, this.price, this.date});
+  Expense({required this.category, required this.place, required this.price, required this.date});
 
   Map<String, dynamic> toMap() {
     return {

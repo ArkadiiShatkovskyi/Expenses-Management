@@ -5,7 +5,7 @@ class StatisticElement extends StatelessWidget {
   final String elementLabel;
   final double elementValue;
 
-  const StatisticElement({Key key, this.elementLabel, this.elementValue})
+  const StatisticElement({Key? key, required this.elementLabel, required this.elementValue})
       : super(key: key);
 
   @override

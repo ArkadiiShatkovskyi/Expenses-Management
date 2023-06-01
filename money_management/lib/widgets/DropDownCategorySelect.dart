@@ -26,9 +26,9 @@ class _DropDownCategorySelectState extends State<DropDownCategorySelect> {
         height: 2,
         color: Colors.black.withAlpha(75),
       ),
-      onChanged: (String newValue) {
+      onChanged: (String? newValue) {
         setState(() {
-          widget.dropdownValue = newValue;
+          widget.dropdownValue = newValue!;
         });
       },
       items: <String>[

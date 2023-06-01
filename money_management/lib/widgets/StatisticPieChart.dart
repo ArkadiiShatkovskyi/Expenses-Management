@@ -6,7 +6,7 @@ import 'package:pie_chart/pie_chart.dart';
 class StatisticPieChart extends StatelessWidget {
   final Map<String, double> dataMap;
 
-  const StatisticPieChart({Key key, this.dataMap}) : super(key: key);
+  const StatisticPieChart({Key? key, required this.dataMap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

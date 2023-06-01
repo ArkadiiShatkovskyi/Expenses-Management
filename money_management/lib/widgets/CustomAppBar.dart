@@ -5,7 +5,7 @@ class CustomAppBar extends StatelessWidget {
   final double height;
   final String text;
 
-  CustomAppBar({this.width, this.height, this.text});
+  CustomAppBar({required this.width, required this.height, required this.text});
 
   @override
   Widget build(BuildContext context) {

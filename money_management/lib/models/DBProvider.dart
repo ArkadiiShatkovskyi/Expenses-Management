@@ -7,7 +7,7 @@ import '../models/Expense.dart';
 
 class DBProvider {
   static String _dbName = "expenses";
-  Future<Database> database;
+  late Future<Database> database;
 
   DBProvider() {
     _getInstance();
